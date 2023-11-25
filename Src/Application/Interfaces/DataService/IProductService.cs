@@ -12,7 +12,7 @@ namespace Application.Interfaces.DataService
         ProductDto AddProduct(CreateProductDto product);
         ProductDto GetByIdProduct(string id);
         IEnumerable<ProductDto> GetAllProducts();
-        void UpdateProduct(ProductDto product);
+        void UpdateProduct(UpdateProductDto product);
         void DeleteProduct(string id);
     }
 }

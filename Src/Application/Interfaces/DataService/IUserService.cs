@@ -12,7 +12,7 @@ namespace Application.Interfaces.DataService
         UserDto AddUser(CreateUserDto user);
         UserDto GetByIdUser (string id);
         IEnumerable<UserDto> GetAllUsers();
-        void UpdateUser(UserDto user);
+        void UpdateUser(UpdateUserDto user);
         void DeleteUser(string id);
     }
 }

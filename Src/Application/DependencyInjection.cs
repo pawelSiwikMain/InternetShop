@@ -17,7 +17,7 @@ namespace Application
             services.AddAutoMapper(Assembly.GetExecutingAssembly());
             services.AddScoped<IAddressService, AddressService>();
             services.AddScoped<IProductService, ProductService>();
-            services.AddScoped<IShopCartService, ShopCarService>();
+            services.AddScoped<IShopCartService, ShopCartService>();
             services.AddScoped<IUserService, UserService>();
             
             return services;

@@ -12,7 +12,7 @@ namespace Application.Interfaces.DataService
         AddressDto AddAddress(CreateAddressDto address);
         AddressDto GetByIdAddress(string id);
         IEnumerable<AddressDto> GetAllAddresses();
-        void UpdateAddress(AddressDto address);
+        void UpdateAddress(UpdateAddressDto address);
         void DeleteAddress(string id);
         
     }

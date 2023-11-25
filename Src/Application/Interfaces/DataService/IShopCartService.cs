@@ -12,7 +12,7 @@ namespace Application.Interfaces.DataService
         ShopCartDto AddShopCart(CreateShopCartDto shopCart);
         ShopCartDto GetByIdShopCart(string id);
         IEnumerable<ShopCartDto> GetAllShopCarts();
-        void UpdateShopCart(ProductDto product);
+        void UpdateShopCart(UpdateShopCartDto product);
         void DeleteShopCart(string id);
     }
 }

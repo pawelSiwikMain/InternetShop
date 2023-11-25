@@ -1,5 +1,7 @@
 ﻿using Application.Dtos.ProductDtos;
 using Application.Interfaces.DataService;
+using AutoMapper;
+using Domain.entities;
 using Domain.interfaces;
 using System;
 using System.Collections.Generic;
@@ -11,36 +13,45 @@ namespace Application.Services.DataService
 {
     public class ProductService : IProductService
     {
-        private readonly IProductRepository _repository;
+        private readonly IProductRepository _productRepository;
+        private readonly IMapper _mapper;
 
-        public ProductService(IProductRepository repository)
+        public ProductService(IProductRepository repository, IMapper mapper)
         {
-            _repository = repository;
+            _productRepository = repository;
+            _mapper = mapper;
         }
 
         public ProductDto AddProduct(CreateProductDto product)
         {
-            throw new NotImplementedException();
+            var newProduct = _mapper.Map<Product>(product);
+            _productRepository.Add(newProduct);
+            return _mapper.Map<ProductDto>(newProduct);
         }
 
         public void DeleteProduct(string id)
         {
-            throw new NotImplementedException();
+            var product = _productRepository.Get(id);
+            _productRepository.Delete(product);
         }
 
         public IEnumerable<ProductDto> GetAllProducts()
         {
-            throw new NotImplementedException();
+            var products = _productRepository.GetAll();
+            return _mapper.Map<IEnumerable<ProductDto>>(products);
         }
 
         public ProductDto GetByIdProduct(string id)
         {
-            throw new NotImplementedException();
+            var product = _productRepository.Get(id);
+            return _mapper.Map<ProductDto>(product);
         }
 
-        public void UpdateProduct(ProductDto product)
+        public void UpdateProduct(UpdateProductDto product)
         {
-            throw new NotImplementedException();
+            var existingProduct = _productRepository.Get(product.Id);
+            var newProcuct = _mapper.Map(product, existingProduct);
+            _productRepository.Update(newProcuct);
         }
     }
 }

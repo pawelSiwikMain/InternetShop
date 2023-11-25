@@ -1,5 +1,7 @@
 ﻿using Application.Dtos.UserDtos;
 using Application.Interfaces.DataService;
+using AutoMapper;
+using Domain.entities;
 using Domain.interfaces;
 using System;
 using System.Collections.Generic;
@@ -12,35 +14,44 @@ namespace Application.Services.DataService
     public class UserService : IUserService
     {
         private readonly IUserRepository _userRepository;
+        private readonly IMapper _mapper;
 
-        public UserService(IUserRepository userRepository)
+        public UserService(IUserRepository userRepository, IMapper mapper)
         {
             _userRepository = userRepository;
+            _mapper = mapper;
         }
 
         public UserDto AddUser(CreateUserDto user)
         {
-            throw new NotImplementedException();
+            var newUser = _mapper.Map<User>(user);
+            _userRepository.Add(newUser);
+            return _mapper.Map<UserDto>(newUser);
         }
 
         public void DeleteUser(string id)
         {
-            throw new NotImplementedException();
+            var user = _userRepository.Get(id);
+            _userRepository.Delete(user);
         }
 
         public IEnumerable<UserDto> GetAllUsers()
         {
-            throw new NotImplementedException();
+            var users = _userRepository.GetAll();
+            return _mapper.Map<IEnumerable<UserDto>>(users);
         }
 
         public UserDto GetByIdUser(string id)
         {
-            throw new NotImplementedException();
+            var user = _userRepository.Get(id);
+            return _mapper.Map<UserDto>(user);
         }
 
-        public void UpdateUser(UserDto user)
+        public void UpdateUser(UpdateUserDto user)
         {
-            throw new NotImplementedException();
+            var existingUser = _userRepository.Get(user.Id);
+            var newUser = _mapper.Map(user, existingUser);
+            _userRepository.Update(newUser);
         }
     }
 }

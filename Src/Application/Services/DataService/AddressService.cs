@@ -1,5 +1,7 @@
 ﻿using Application.Dtos.AddressDtos;
 using Application.Interfaces.DataService;
+using AutoMapper;
+using Domain.entities;
 using Domain.interfaces;
 using System;
 using System.Collections.Generic;
@@ -12,35 +14,44 @@ namespace Application.Services.DataService
     public class AddressService : IAddressService
     {
         private readonly IAddressRepository _addressRepository;
+        private readonly IMapper _mapper;
 
-        public AddressService(IAddressRepository addressRepository)
+        public AddressService(IAddressRepository addressRepository, IMapper mapper)
         {
             _addressRepository = addressRepository;
+            _mapper = mapper;
         }
 
         public AddressDto AddAddress(CreateAddressDto address)
         {
-            throw new NotImplementedException();
+            var newAddress = _mapper.Map<Address>(address);
+            _addressRepository.Add(newAddress);
+            return _mapper.Map<AddressDto>(newAddress);
         }
 
         public void DeleteAddress(string id)
         {
-            throw new NotImplementedException();
+            var address = _addressRepository.Get(id);
+            _addressRepository.Delete(address);
         }
 
         public IEnumerable<AddressDto> GetAllAddresses()
         {
-            throw new NotImplementedException();
+            var addresses = _addressRepository.GetAll();
+            return _mapper.Map<IEnumerable<AddressDto>>(addresses);
         }
 
         public AddressDto GetByIdAddress(string id)
         {
-            throw new NotImplementedException();
+            var address = _addressRepository.Get(id);
+            return _mapper.Map<AddressDto>(address);
         }
 
-        public void UpdateAddress(AddressDto address)
+        public void UpdateAddress(UpdateAddressDto address)
         {
-            throw new NotImplementedException();
+            var existingAddress = _addressRepository.Get(address.Id);
+            var newAddress = _mapper.Map(address, existingAddress);
+            _addressRepository.Update(newAddress); 
         }
     }
 }
