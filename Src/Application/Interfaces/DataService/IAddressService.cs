@@ -1,4 +1,4 @@
-﻿using Application.Dtos.Address;
+﻿using Application.Dtos.AddressDtos;
 using System;
 using System.Collections.Generic;
 using System.Linq;

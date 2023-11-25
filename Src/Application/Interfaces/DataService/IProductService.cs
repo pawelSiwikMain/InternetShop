@@ -1,5 +1,4 @@
-﻿using Application.Dtos.Address;
-using Application.Dtos.Product;
+﻿using Application.Dtos.ProductDtos;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Application.Interfaces.DataService
 {
-    public interface IProductService
+    public interface IProductService 
     {
         ProductDto AddProduct(CreateProductDto product);
         ProductDto GetByIdProduct(string id);

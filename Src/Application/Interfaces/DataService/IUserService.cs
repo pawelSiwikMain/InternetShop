@@ -1,4 +1,4 @@
-﻿using Application.Dtos.User;
+﻿using Application.Dtos.UserDtos;
 using System;
 using System.Collections.Generic;
 using System.Linq;

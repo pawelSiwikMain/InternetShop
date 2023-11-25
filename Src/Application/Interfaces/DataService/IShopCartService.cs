@@ -1,5 +1,4 @@
-﻿using Application.Dtos.Product;
-using Application.Dtos.ShopCart;
+﻿using Application.Dtos.ShopCartDtos;
 using System;
 using System.Collections.Generic;
 using System.Linq;

@@ -1,10 +1,13 @@
 using Infrastructure.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
+using ShopWebApi.Installers;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
+IConfiguration configuration = builder.Configuration;
+builder.Services.InstallServicesInAssembly(configuration);
 builder.Services.AddDbContext<ShopContext>(options =>
                 options.UseSqlServer(builder.Configuration.GetConnectionString("ShopCS")));
 builder.Services.AddControllers();

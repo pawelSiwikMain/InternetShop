@@ -1,4 +1,4 @@
-﻿using Application.Dtos.Product;
+﻿using Application.Dtos.ProductDtos;
 using Application.Interfaces.DataService;
 using Domain.interfaces;
 using System;
