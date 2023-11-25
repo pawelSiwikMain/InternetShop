@@ -11,12 +11,12 @@ namespace Application.Dtos.AddressDtos
 {
     public class AddressDto : IMap
     {
-        public string Id { get; set; }
-        public string UserId { get; set; }
-        public string PostCode { get; set; }
-        public string City { get; set; }
-        public string Street { get; set; }
-        public string LocalNumber { get; set; }
+        public string Id { get; set; } = string.Empty;
+        public string UserId { get; set; } = string.Empty;
+        public string PostCode { get; set; } = string.Empty;
+        public string City { get; set; } = string.Empty;
+        public string Street { get; set; } = string.Empty;
+        public string LocalNumber { get; set; } = string.Empty;
 
         public AddressDto()
         {

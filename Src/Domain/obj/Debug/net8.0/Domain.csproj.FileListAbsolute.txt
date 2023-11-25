@@ -9,3 +9,15 @@ C:\Repos\Shop\Domain\obj\Debug\net8.0\Domain.dll
 C:\Repos\Shop\Domain\obj\Debug\net8.0\refint\Domain.dll
 C:\Repos\Shop\Domain\obj\Debug\net8.0\Domain.pdb
 C:\Repos\Shop\Domain\obj\Debug\net8.0\ref\Domain.dll
+C:\Repos\Shop\Src\Domain\bin\Debug\net8.0\Domain.deps.json
+C:\Repos\Shop\Src\Domain\bin\Debug\net8.0\Domain.dll
+C:\Repos\Shop\Src\Domain\bin\Debug\net8.0\Domain.pdb
+C:\Repos\Shop\Src\Domain\obj\Debug\net8.0\Domain.GeneratedMSBuildEditorConfig.editorconfig
+C:\Repos\Shop\Src\Domain\obj\Debug\net8.0\Domain.AssemblyInfoInputs.cache
+C:\Repos\Shop\Src\Domain\obj\Debug\net8.0\Domain.AssemblyInfo.cs
+C:\Repos\Shop\Src\Domain\obj\Debug\net8.0\Domain.csproj.CoreCompileInputs.cache
+C:\Repos\Shop\Src\Domain\obj\Debug\net8.0\Domain.sourcelink.json
+C:\Repos\Shop\Src\Domain\obj\Debug\net8.0\Domain.dll
+C:\Repos\Shop\Src\Domain\obj\Debug\net8.0\refint\Domain.dll
+C:\Repos\Shop\Src\Domain\obj\Debug\net8.0\Domain.pdb
+C:\Repos\Shop\Src\Domain\obj\Debug\net8.0\ref\Domain.dll

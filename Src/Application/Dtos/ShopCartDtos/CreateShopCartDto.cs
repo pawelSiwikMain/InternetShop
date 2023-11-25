@@ -11,12 +11,12 @@ namespace Application.Dtos.ShopCartDtos
 {
     public class CreateShopCartDto : IMap
     {
-        public string UserId { get; set; }
-        public string ProductId { get; set; }
-        public string Name { get; set; }
-        public float Price { get; set; }
-        public int QuqntityInCart { get; set; }
-        public string UrlToOffer { get; set; }
+        public string UserId { get; set; } = string.Empty;
+        public string ProductId { get; set; } = string.Empty;
+        public string Name { get; set; } = string.Empty;
+        public float Price { get; set; } = default(float);
+        public int QuqntityInCart { get; set; } = default(int);
+        public string UrlToOffer { get; set; } = string.Empty;
         public CreateShopCartDto()
         {            
         }

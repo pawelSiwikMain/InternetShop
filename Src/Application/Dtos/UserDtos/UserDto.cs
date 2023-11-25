@@ -11,13 +11,13 @@ namespace Application.Dtos.UserDtos
 {
     public class UserDto : IMap
     {
-        public string Id { get; set; }
-        public string UserMail { get; set; }
-        public string Name { get; set; }
-        public string LastName { get; set; }
-        public string Phone { get; set; }
-        public string Password { get; set; }
-        public bool IsAdmin { get; set; }
+        public string Id { get; set; } = string.Empty;
+        public string UserMail { get; set; } = string.Empty;
+        public string Name { get; set; } = string.Empty;
+        public string LastName { get; set; } = string.Empty;
+        public string Phone { get; set; } = string.Empty;
+        public string Password { get; set; } = string.Empty;
+        public bool IsAdmin { get; set; } = default(bool);
 
         public UserDto()
         {            
