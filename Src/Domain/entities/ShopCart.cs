@@ -10,10 +10,10 @@ namespace Domain.entities
 {
     public class ShopCart
     {
-        public string Id { get; set; }
+        public int Id { get; set; }
         public virtual User User { get; set; }
-        public string UserId { get; set; }
-        public string ProductId { get; set; }
+        public int UserId { get; set; }
+        public int ProductId { get; set; }
         public string Name { get; set; }
         public float Price { get; set; }
         public int QuqntityInCart { get; set; }
@@ -23,7 +23,7 @@ namespace Domain.entities
         {
         }
 
-        public ShopCart(string id, string userId, string productId, string name, float price, int quqntityInCart, string urlToOffer)
+        public ShopCart(int id, int userId, int productId, string name, float price, int quqntityInCart, string urlToOffer)
         {
             Id = id;
             UserId = userId;

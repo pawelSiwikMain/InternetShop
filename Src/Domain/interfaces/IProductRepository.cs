@@ -10,7 +10,7 @@ namespace Domain.interfaces
     public interface IProductRepository
     {
         IEnumerable<Product> GetAll();
-        Product Get(string id);
+        Product Get(int id);
         Product Add(Product product);
         void Update(Product product);
         void Delete(Product product);

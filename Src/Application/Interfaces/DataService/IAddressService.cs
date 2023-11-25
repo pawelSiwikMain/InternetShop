@@ -10,10 +10,10 @@ namespace Application.Interfaces.DataService
     public interface IAddressService
     {
         AddressDto AddAddress(CreateAddressDto address);
-        AddressDto GetByIdAddress(string id);
+        AddressDto GetByIdAddress(int id);
         IEnumerable<AddressDto> GetAllAddresses();
         void UpdateAddress(UpdateAddressDto address);
-        void DeleteAddress(string id);
+        void DeleteAddress(int id);
         
     }
 }

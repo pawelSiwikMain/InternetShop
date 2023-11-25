@@ -29,7 +29,7 @@ namespace Application.Services.DataService
             return _mapper.Map<UserDto>(newUser);
         }
 
-        public void DeleteUser(string id)
+        public void DeleteUser(int id)
         {
             var user = _userRepository.Get(id);
             _userRepository.Delete(user);
@@ -41,7 +41,7 @@ namespace Application.Services.DataService
             return _mapper.Map<IEnumerable<UserDto>>(users);
         }
 
-        public UserDto GetByIdUser(string id)
+        public UserDto GetByIdUser(int id)
         {
             var user = _userRepository.Get(id);
             return _mapper.Map<UserDto>(user);

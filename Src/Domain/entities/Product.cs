@@ -10,7 +10,7 @@ namespace Domain.entities
 {
     public class Product
     {
-        public string Id { get; set; }
+        public int Id { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
         public string Category { get; set; }
@@ -22,7 +22,7 @@ namespace Domain.entities
         {
         }
 
-        public Product(string id, string name, string description, string category, float price, int quqntityInStorage, string urlToPicture)
+        public Product(int id, string name, string description, string category, float price, int quqntityInStorage, string urlToPicture)
         {
             Id = id;
             Name = name;

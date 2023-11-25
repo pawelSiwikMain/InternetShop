@@ -11,17 +11,17 @@ namespace Application.Dtos.AddressDtos
 {
     public class CreateAddressDto : IMap
     {
-        public string UserId { get; set; } = string.Empty;
-        public string PostCode { get; set; } = string.Empty;
-        public string City { get; set; } = string.Empty;
-        public string Street { get; set; } = string.Empty;
-        public string LocalNumber { get; set; } = string.Empty;
+        public int UserId { get; set; }
+        public string PostCode { get; set; } 
+        public string City { get; set; } 
+        public string Street { get; set; } 
+        public string LocalNumber { get; set; } 
 
         public CreateAddressDto()
         {
         }
 
-        public CreateAddressDto(string userId, string postCode, string city, string street, string localNumber)
+        public CreateAddressDto(int userId, string postCode, string city, string street, string localNumber)
         {
             UserId = userId;
             PostCode = postCode;

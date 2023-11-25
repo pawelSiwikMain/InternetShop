@@ -11,19 +11,19 @@ namespace Application.Dtos.ShopCartDtos
 {
     public class ShopCartDto : IMap
     {
-        public string Id { get; set; } = string.Empty;
-        public string UserId { get; set; } = string.Empty;
-        public string ProductId { get; set; } = string.Empty;
-        public string Name { get; set; } = string.Empty;
-        public float Price { get; set; } = default(float);
-        public int QuqntityInCart { get; set; } = default(int);
-        public string UrlToOffer { get; set; } = string.Empty;
+        public int Id { get; set; } 
+        public int UserId { get; set; } 
+        public int ProductId { get; set; } 
+        public string Name { get; set; } 
+        public float Price { get; set; } 
+        public int QuqntityInCart { get; set; } 
+        public string UrlToOffer { get; set; } 
 
         public ShopCartDto()
         {            
         }
 
-        public ShopCartDto(string id, string userId, string productId, string name, float price, int quqntityInCart, string urlToOffer)
+        public ShopCartDto(int id, int userId, int productId, string name, float price, int quqntityInCart, string urlToOffer)
         {
             Id = id;
             UserId = userId;

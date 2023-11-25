@@ -21,7 +21,7 @@ namespace ShopWebApi.Controllers
             return Ok(shopCarts);
         }
         [HttpGet("{id}")]
-        public IActionResult Get(string id) 
+        public IActionResult Get(int id) 
         {
             var shopCart = _shopCartService.GetByIdShopCart(id);
             return Ok(shopCart);
@@ -39,7 +39,7 @@ namespace ShopWebApi.Controllers
             return NoContent();
         }
         [HttpDelete]
-        public IActionResult Delete(string id) 
+        public IActionResult Delete(int id) 
         {
             _shopCartService.DeleteShopCart(id);
             return NoContent();

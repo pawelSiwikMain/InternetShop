@@ -10,9 +10,9 @@ namespace Application.Interfaces.DataService
     public interface IShopCartService
     {
         ShopCartDto AddShopCart(CreateShopCartDto shopCart);
-        ShopCartDto GetByIdShopCart(string id);
+        ShopCartDto GetByIdShopCart(int id);
         IEnumerable<ShopCartDto> GetAllShopCarts();
         void UpdateShopCart(UpdateShopCartDto product);
-        void DeleteShopCart(string id);
+        void DeleteShopCart(int id);
     }
 }

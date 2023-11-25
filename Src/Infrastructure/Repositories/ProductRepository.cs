@@ -31,7 +31,7 @@ namespace Infrastructure.Repositories
             _context.SaveChanges();
         }
 
-        public Product Get(string id)
+        public Product Get(int id)
         {
            return _context.Products.SingleOrDefault(p => p.Id == id);
         }

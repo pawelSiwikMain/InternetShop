@@ -10,9 +10,9 @@ namespace Domain.entities
 {
     public class Address
     {
-        public string Id { get; set; }
+        public int Id { get; set; }
         public virtual User User { get; set; }
-        public string UserId { get; set; }
+        public int UserId { get; set; }
         public string PostCode { get; set; }
         public string City { get; set; }
         public string Street { get; set; }
@@ -24,7 +24,7 @@ namespace Domain.entities
         {
         }
 
-        public Address(string id, string userId, string postCode, string city, string street, string localNumber)
+        public Address(int id, int userId, string postCode, string city, string street, string localNumber)
         {
             Id = id;
             UserId = userId;

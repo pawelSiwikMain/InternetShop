@@ -31,7 +31,7 @@ namespace Infrastructure.Repositories
             _context.SaveChanges();
         }
 
-        public Address Get(string id)
+        public Address Get(int id)
         {
             return _context.Addresses.SingleOrDefault(a => a.Id == id);
         }

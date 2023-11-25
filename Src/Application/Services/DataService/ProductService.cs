@@ -29,7 +29,7 @@ namespace Application.Services.DataService
             return _mapper.Map<ProductDto>(newProduct);
         }
 
-        public void DeleteProduct(string id)
+        public void DeleteProduct(int id)
         {
             var product = _productRepository.Get(id);
             _productRepository.Delete(product);
@@ -41,7 +41,7 @@ namespace Application.Services.DataService
             return _mapper.Map<IEnumerable<ProductDto>>(products);
         }
 
-        public ProductDto GetByIdProduct(string id)
+        public ProductDto GetByIdProduct(int id)
         {
             var product = _productRepository.Get(id);
             return _mapper.Map<ProductDto>(product);

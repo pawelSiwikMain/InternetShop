@@ -11,19 +11,19 @@ namespace Application.Dtos.ProductDtos
 {
     public class ProductDto : IMap
     {
-        public string Id { get; set; } = string.Empty;
-        public string Name { get; set; } = string.Empty;
-        public string Description { get; set; } = string.Empty;
-        public string Category { get; set; } = string.Empty;
-        public float Price { get; set; } = default(float);
-        public int QuqntityInStorage { get; set; } = default(int);
-        public string UrlToPicture { get; set; } = string.Empty;
+        public int Id { get; set; } 
+        public string Name { get; set; } 
+        public string Description { get; set; } 
+        public string Category { get; set; } 
+        public float Price { get; set; }
+        public int QuqntityInStorage { get; set; }
+        public string UrlToPicture { get; set; }
 
         public ProductDto()
         {
         }
 
-        public ProductDto(string id, string name, string description, string category, float price, int quqntityInStorage, string urlToPicture)
+        public ProductDto(int id, string name, string description, string category, float price, int quqntityInStorage, string urlToPicture)
         {
             Id = id;
             Name = name;

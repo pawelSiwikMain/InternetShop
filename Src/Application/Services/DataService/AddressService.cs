@@ -29,7 +29,7 @@ namespace Application.Services.DataService
             return _mapper.Map<AddressDto>(newAddress);
         }
 
-        public void DeleteAddress(string id)
+        public void DeleteAddress(int id)
         {
             var address = _addressRepository.Get(id);
             _addressRepository.Delete(address);
@@ -41,7 +41,7 @@ namespace Application.Services.DataService
             return _mapper.Map<IEnumerable<AddressDto>>(addresses);
         }
 
-        public AddressDto GetByIdAddress(string id)
+        public AddressDto GetByIdAddress(int id)
         {
             var address = _addressRepository.Get(id);
             return _mapper.Map<AddressDto>(address);

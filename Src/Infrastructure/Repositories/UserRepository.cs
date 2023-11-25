@@ -31,7 +31,7 @@ namespace Infrastructure.Repositories
             _context.SaveChanges();
         }
 
-        public User Get(string id)
+        public User Get(int id)
         {
             return _context.Users.SingleOrDefault(u => u.Id == id);
         }

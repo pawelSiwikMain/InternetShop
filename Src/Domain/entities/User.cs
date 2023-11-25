@@ -10,7 +10,7 @@ namespace Domain.entities
 {
     public class User
     {
-        public string Id { get; set; }
+        public int Id { get; set; }
         public string UserMail { get; set; }
         public string Name { get; set; }
         public string LastName { get; set; }
@@ -24,7 +24,7 @@ namespace Domain.entities
         {
         }
 
-        public User(string id, string userMail, string name, string lastName, string phone, string password, bool isAdmin)
+        public User(int id, string userMail, string name, string lastName, string phone, string password, bool isAdmin)
         {
             Id = id;
             UserMail = userMail;

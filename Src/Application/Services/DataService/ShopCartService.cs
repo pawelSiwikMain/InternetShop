@@ -29,7 +29,7 @@ namespace Application.Services.DataService
             return _mapper.Map<ShopCartDto>(newShopCart);
         }
 
-        public void DeleteShopCart(string id)
+        public void DeleteShopCart(int id)
         {
             var shopCart = _shopCartRepository.Get(id);
             _shopCartRepository.Delete(shopCart);
@@ -41,7 +41,7 @@ namespace Application.Services.DataService
             return _mapper.Map<IEnumerable<ShopCartDto>>(shopCarts);
         }
 
-        public ShopCartDto GetByIdShopCart(string id)
+        public ShopCartDto GetByIdShopCart(int id)
         {
             var shopCart = _shopCartRepository.Get(id);
             return _mapper.Map<ShopCartDto>(shopCart);

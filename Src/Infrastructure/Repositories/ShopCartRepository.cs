@@ -31,7 +31,7 @@ namespace Infrastructure.Repositories
             _context.SaveChanges();
         }
 
-        public ShopCart Get(string id)
+        public ShopCart Get(int id)
         {
             return _context.ShopCarts.SingleOrDefault(s => s.Id == id);
         }

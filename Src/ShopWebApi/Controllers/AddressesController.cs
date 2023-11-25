@@ -22,7 +22,7 @@ namespace ShopWebApi.Controllers
             return Ok(addresses);
         }
         [HttpGet("{id}")]
-        public IActionResult Get(string id) 
+        public IActionResult Get(int id) 
         {
             var address = _addressService.GetByIdAddress(id);
             return Ok(address);
@@ -40,7 +40,7 @@ namespace ShopWebApi.Controllers
             return NoContent();
         }
         [HttpDelete]
-        public IActionResult Delete(string id) 
+        public IActionResult Delete(int id) 
         {
             _addressService.DeleteAddress(id);
             return NoContent();

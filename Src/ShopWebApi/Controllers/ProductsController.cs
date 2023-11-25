@@ -22,7 +22,7 @@ namespace ShopWebApi.Controllers
             return Ok(products);
         }
         [HttpGet("{id}")]
-        public IActionResult Get(string id) 
+        public IActionResult Get(int id) 
         {
             var product = _productService.GetByIdProduct(id);
             return Ok(product);
@@ -40,7 +40,7 @@ namespace ShopWebApi.Controllers
             return NoContent();
         }
         [HttpDelete]
-        public IActionResult Delete(string id) 
+        public IActionResult Delete(int id) 
         {
             _productService.DeleteProduct(id);
             return NoContent();

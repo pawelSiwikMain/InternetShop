@@ -10,7 +10,7 @@ namespace Domain.interfaces
     public interface IShopCartRepository
     {
         IEnumerable<ShopCart> GetAll();
-        ShopCart Get(string id);
+        ShopCart Get(int id);
         ShopCart Add(ShopCart shopCart);
         void Update(ShopCart shopCart);
         void Delete(ShopCart shopCart);

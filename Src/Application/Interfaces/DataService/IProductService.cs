@@ -10,9 +10,9 @@ namespace Application.Interfaces.DataService
     public interface IProductService 
     {
         ProductDto AddProduct(CreateProductDto product);
-        ProductDto GetByIdProduct(string id);
+        ProductDto GetByIdProduct(int id);
         IEnumerable<ProductDto> GetAllProducts();
         void UpdateProduct(UpdateProductDto product);
-        void DeleteProduct(string id);
+        void DeleteProduct(int id);
     }
 }
