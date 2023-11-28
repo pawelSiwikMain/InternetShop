@@ -46,6 +46,12 @@ namespace Application.Services.DataService
             var product = _productRepository.Get(id);
             return _mapper.Map<ProductDto>(product);
         }
+        public IEnumerable<ProductDto> GetByIdCategory(string category)
+        {
+            var products = _productRepository.GetByCategory(category);
+            var poroductsDto = _mapper.Map<IEnumerable<ProductDto>>(products);
+            return poroductsDto;
+        }
 
         public void UpdateProduct(UpdateProductDto product)
         {

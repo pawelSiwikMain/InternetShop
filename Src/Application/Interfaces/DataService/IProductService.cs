@@ -11,6 +11,7 @@ namespace Application.Interfaces.DataService
     {
         ProductDto AddProduct(CreateProductDto product);
         ProductDto GetByIdProduct(int id);
+        IEnumerable<ProductDto> GetByIdCategory(string category);
         IEnumerable<ProductDto> GetAllProducts();
         void UpdateProduct(UpdateProductDto product);
         void DeleteProduct(int id);
