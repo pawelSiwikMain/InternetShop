@@ -39,7 +39,7 @@ namespace ShopWebApi.Controllers
             _addressService.UpdateAddress(address);
             return NoContent();
         }
-        [HttpDelete]
+        [HttpDelete("{id}")]
         public IActionResult Delete(int id) 
         {
             _addressService.DeleteAddress(id);

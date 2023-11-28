@@ -39,7 +39,7 @@ namespace ShopWebApi.Controllers
             _productService.UpdateProduct(product);
             return NoContent();
         }
-        [HttpDelete]
+        [HttpDelete("{id}")]
         public IActionResult Delete(int id) 
         {
             _productService.DeleteProduct(id);

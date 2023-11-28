@@ -9,10 +9,7 @@ namespace Application.Interfaces.DataService
 {
     public interface IUserService
     {
-        UserDto AddUser(CreateUserDto user);
-        UserDto GetByIdUser (int id);
-        IEnumerable<UserDto> GetAllUsers();
-        void UpdateUser(UpdateUserDto user);
-        void DeleteUser(int id);
+        UserDto GetUser(int id);
+        void Delete(int id); 
     }
 }

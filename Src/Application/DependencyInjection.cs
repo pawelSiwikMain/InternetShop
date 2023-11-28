@@ -1,4 +1,6 @@
-﻿using Application.Interfaces.DataService;
+﻿using Application.Interfaces.AuthorizationService;
+using Application.Interfaces.DataService;
+using Application.Services.AuthorizationService;
 using Application.Services.DataService;
 using Microsoft.Extensions.DependencyInjection;
 using System;
@@ -19,6 +21,8 @@ namespace Application
             services.AddScoped<IProductService, ProductService>();
             services.AddScoped<IShopCartService, ShopCartService>();
             services.AddScoped<IUserService, UserService>();
+            services.AddScoped<IOrderService, OrderService>();
+            services.AddScoped<IAuthorizationService, AuthorizationService>();
             
             return services;
         }

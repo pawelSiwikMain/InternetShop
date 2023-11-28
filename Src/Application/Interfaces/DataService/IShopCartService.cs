@@ -11,7 +11,7 @@ namespace Application.Interfaces.DataService
     {
         ShopCartDto AddShopCart(CreateShopCartDto shopCart);
         ShopCartDto GetByIdShopCart(int id);
-        IEnumerable<ShopCartDto> GetAllShopCarts();
+        IEnumerable<ShopCartDto> GetShopCartsForUser(int  userId);
         void UpdateShopCart(UpdateShopCartDto product);
         void DeleteShopCart(int id);
     }

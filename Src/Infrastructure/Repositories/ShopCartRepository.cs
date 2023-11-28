@@ -36,9 +36,9 @@ namespace Infrastructure.Repositories
             return _context.ShopCarts.SingleOrDefault(s => s.Id == id);
         }
 
-        public IEnumerable<ShopCart> GetAll()
+        public IEnumerable<ShopCart> GetAllForUser(int userId)
         {
-            return _context.ShopCarts;
+            return _context.ShopCarts.Where(s => s.UserId == userId);
         }
 
         public void Update(ShopCart shopCart)

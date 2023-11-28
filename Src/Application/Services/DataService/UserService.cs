@@ -1,7 +1,6 @@
 ﻿using Application.Dtos.UserDtos;
 using Application.Interfaces.DataService;
 using AutoMapper;
-using Domain.entities;
 using Domain.interfaces;
 using System;
 using System.Collections.Generic;
@@ -22,36 +21,16 @@ namespace Application.Services.DataService
             _mapper = mapper;
         }
 
-        public UserDto AddUser(CreateUserDto user)
-        {
-            var newUser = _mapper.Map<User>(user);
-            _userRepository.Add(newUser);
-            return _mapper.Map<UserDto>(newUser);
-        }
-
-        public void DeleteUser(int id)
+        public void Delete(int id)
         {
             var user = _userRepository.Get(id);
             _userRepository.Delete(user);
         }
 
-        public IEnumerable<UserDto> GetAllUsers()
-        {
-            var users = _userRepository.GetAll();
-            return _mapper.Map<IEnumerable<UserDto>>(users);
-        }
-
-        public UserDto GetByIdUser(int id)
+        public UserDto GetUser(int id)
         {
             var user = _userRepository.Get(id);
             return _mapper.Map<UserDto>(user);
-        }
-
-        public void UpdateUser(UpdateUserDto user)
-        {
-            var existingUser = _userRepository.Get(user.Id);
-            var newUser = _mapper.Map(user, existingUser);
-            _userRepository.Update(newUser);
         }
     }
 }

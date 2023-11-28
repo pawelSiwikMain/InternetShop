@@ -1,5 +1,4 @@
-﻿using Application.Dtos.UserDtos;
-using Application.Interfaces.DataService;
+﻿using Application.Interfaces.DataService;
 using Microsoft.AspNetCore.Mvc;
 
 namespace ShopWebApi.Controllers
@@ -15,34 +14,16 @@ namespace ShopWebApi.Controllers
             _userService = userService;
         }
 
-        [HttpGet]
-        public IActionResult Get()
-        {
-            var users = _userService.GetAllUsers();
-            return Ok(users);
-        }
         [HttpGet("{id}")]
-        public IActionResult Get(int id)
+        public IActionResult GetById(int id)
         {
-            var user = _userService.GetByIdUser(id);
+            var user = _userService.GetUser(id);
             return Ok(user);
-        }
-        [HttpPost]
-        public IActionResult Create(CreateUserDto user)
-        {
-            var response = _userService.AddUser(user);
-            return Created($"api/users/{response.Id}", response);
-        }
-        [HttpPut]
-        public IActionResult Update(UpdateUserDto user)
-        {
-            _userService.UpdateUser(user);
-            return NoContent();
         }
         [HttpDelete("{id}")]
         public IActionResult Delete(int id) 
         {
-            _userService.DeleteUser(id);
+            _userService.Delete(id);
             return NoContent();
         }
     }
