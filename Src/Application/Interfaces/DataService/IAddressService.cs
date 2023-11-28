@@ -11,7 +11,6 @@ namespace Application.Interfaces.DataService
     {
         AddressDto AddAddress(CreateAddressDto address);
         AddressDto GetByIdAddress(int id);
-        IEnumerable<AddressDto> GetAllAddresses();
         void UpdateAddress(UpdateAddressDto address);
         void DeleteAddress(int id);
         

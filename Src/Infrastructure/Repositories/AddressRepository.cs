@@ -35,12 +35,6 @@ namespace Infrastructure.Repositories
         {
             return _context.Addresses.SingleOrDefault(a => a.Id == id);
         }
-
-        public IEnumerable<Address> GetAll()
-        {
-            return _context.Addresses;
-        }
-
         public void Update(Address address)
         {
             _context.Addresses.Update(address);

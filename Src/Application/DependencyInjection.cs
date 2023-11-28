@@ -1,7 +1,9 @@
 ﻿using Application.Interfaces.AuthorizationService;
 using Application.Interfaces.DataService;
+using Application.Interfaces.PaymentService;
 using Application.Services.AuthorizationService;
 using Application.Services.DataService;
+using Application.Services.PaymentService;
 using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
@@ -23,6 +25,7 @@ namespace Application
             services.AddScoped<IUserService, UserService>();
             services.AddScoped<IOrderService, OrderService>();
             services.AddScoped<IAuthorizationService, AuthorizationService>();
+            services.AddScoped<IPaymentService, PaymentService>();
             
             return services;
         }
