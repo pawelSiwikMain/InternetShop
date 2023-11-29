@@ -14,14 +14,14 @@ namespace ShopWebApi.Controllers
         {
             _shopCartService = shopCartService;
         }
-        [HttpGet]
-        public IActionResult Get() 
+        [HttpGet("userId/{id}")]
+        public IActionResult GetAllForUser(int id) 
         { 
-            var shopCarts = _shopCartService.GetAllShopCarts();
+            var shopCarts = _shopCartService.GetShopCartsForUser(id);
             return Ok(shopCarts);
         }
         [HttpGet("{id}")]
-        public IActionResult Get(int id) 
+        public IActionResult GetById(int id) 
         {
             var shopCart = _shopCartService.GetByIdShopCart(id);
             return Ok(shopCart);
@@ -38,7 +38,7 @@ namespace ShopWebApi.Controllers
             _shopCartService.UpdateShopCart(shopCart);
             return NoContent();
         }
-        [HttpDelete]
+        [HttpDelete("{id}")]
         public IActionResult Delete(int id) 
         {
             _shopCartService.DeleteShopCart(id);

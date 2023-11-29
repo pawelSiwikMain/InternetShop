@@ -40,6 +40,11 @@ namespace Infrastructure.Repositories
         {
             return _context.Products;
         }
+        public IEnumerable<Product> GetByCategory(string category)
+        {
+            var items = _context.Products.Where(p => p.Category == category);
+            return items;
+        }
 
         public void Update(Product product)
         {

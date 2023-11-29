@@ -18,6 +18,8 @@ namespace Infrastructure
             services.AddScoped<IProductRepository, ProductRepository>();
             services.AddScoped<IShopCartRepository, ShopCartRepository>();
             services.AddScoped<IUserRepository, UserRepository>();
+            services.AddScoped<IOrderItemRepository, OrderItemRepository>();
+            services.AddScoped<IOrderRepository, OrderRepository>();
             return services;
         }
     }

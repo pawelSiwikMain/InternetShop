@@ -35,10 +35,10 @@ namespace Infrastructure.Repositories
         {
             return _context.Users.SingleOrDefault(u => u.Id == id);
         }
-
-        public IEnumerable<User> GetAll()
+         
+        public User GetByMail(string email)
         {
-            return _context.Users;
+            return _context.Users.SingleOrDefault(u => u.UserMail == email);
         }
 
         public void Update(User user)

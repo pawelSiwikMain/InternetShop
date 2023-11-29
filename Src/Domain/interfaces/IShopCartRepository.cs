@@ -9,7 +9,7 @@ namespace Domain.interfaces
 {
     public interface IShopCartRepository
     {
-        IEnumerable<ShopCart> GetAll();
+        IEnumerable<ShopCart> GetAllForUser(int userId);
         ShopCart Get(int id);
         ShopCart Add(ShopCart shopCart);
         void Update(ShopCart shopCart);

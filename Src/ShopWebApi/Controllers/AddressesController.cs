@@ -14,13 +14,6 @@ namespace ShopWebApi.Controllers
         {
             _addressService = addressService;
         }
-
-        [HttpGet]
-        public IActionResult Get()
-        {
-            var addresses = _addressService.GetAllAddresses();
-            return Ok(addresses);
-        }
         [HttpGet("{id}")]
         public IActionResult Get(int id) 
         {
@@ -39,7 +32,7 @@ namespace ShopWebApi.Controllers
             _addressService.UpdateAddress(address);
             return NoContent();
         }
-        [HttpDelete]
+        [HttpDelete("{id}")]
         public IActionResult Delete(int id) 
         {
             _addressService.DeleteAddress(id);

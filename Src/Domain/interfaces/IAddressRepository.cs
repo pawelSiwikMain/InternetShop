@@ -9,7 +9,6 @@ namespace Domain.interfaces
 {
     public interface IAddressRepository
     {
-        IEnumerable<Address> GetAll();
         Address Get(int id);
         Address Add(Address address);
         void Update(Address address);

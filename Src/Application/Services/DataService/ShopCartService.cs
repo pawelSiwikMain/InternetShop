@@ -35,9 +35,9 @@ namespace Application.Services.DataService
             _shopCartRepository.Delete(shopCart);
         }
 
-        public IEnumerable<ShopCartDto> GetAllShopCarts()
+        public IEnumerable<ShopCartDto> GetShopCartsForUser(int userId)
         {
-            var shopCarts = _shopCartRepository.GetAll();
+            var shopCarts = _shopCartRepository.GetAllForUser(userId);
             return _mapper.Map<IEnumerable<ShopCartDto>>(shopCarts);
         }
 

@@ -35,12 +35,6 @@ namespace Application.Services.DataService
             _addressRepository.Delete(address);
         }
 
-        public IEnumerable<AddressDto> GetAllAddresses()
-        {
-            var addresses = _addressRepository.GetAll();
-            return _mapper.Map<IEnumerable<AddressDto>>(addresses);
-        }
-
         public AddressDto GetByIdAddress(int id)
         {
             var address = _addressRepository.Get(id);
