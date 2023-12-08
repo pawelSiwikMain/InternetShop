@@ -27,7 +27,7 @@ namespace ShopWebApi.Controllers
             var product = _productService.GetByIdProduct(id);
             return Ok(product);
         }
-        [HttpGet("{category}")]
+        [HttpGet("category/{category}")]
         public IActionResult Get(string category)
         {
             var products = _productService.GetByIdCategory(category);
