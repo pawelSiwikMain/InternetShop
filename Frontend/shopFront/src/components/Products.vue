@@ -14,17 +14,15 @@
         </select>
       </div>
     </div>
-    <div class="row">
-      <div v-for="product in products" :key="product.id" class="col-12 col-md-4 col-lg-3 mb-4">
-        <div class="card" @click="goToProductDetails(product)">
+    <div class="card-container row">
+      <div v-for="product in products" :key="product.id" class="card col-md-4 mb-4" @click="goToProductDetails(product.id)">
+        <div class="productcard card-body">
           <img :src="product.urlToPicture" class="card-img-top" alt="Product Image">
-          <div class="card-body">
-            <h5 class="card-title">{{ product.name }}</h5>
-            <p class="card-text">{{ product.description }}</p>
-            <p class="card-text"><strong>Category:</strong> {{ product.category }}</p>
-            <p class="card-text"><strong>Price:</strong> {{ product.price }} zł</p>
-            <p class="card-text"><strong>Quantity:</strong> {{ product.quantityInStorage }}</p>
-          </div>
+          <h5 class="card-title">{{ product.name }}</h5>
+          <p class="card-text">{{ product.description }}</p>
+          <p class="card-text">Category: {{ product.category }}</p>
+          <p class="card-text">Price: {{ product.price }} zł</p>
+          <p class="card-text">Quantity: {{ product.quantityInStorage }}</p>
         </div>
       </div>
     </div>
@@ -69,10 +67,9 @@ const fetchProductsByCategory = async () => {
   }
 };
 
-const goToProductDetails = (product) => {
-  router.push({ name: 'ProductDetail', params: { id: product.id } });
+const goToProductDetails = (productId) => {
+  router.push({ path: `/product/${productId}` });
 };
-
 
 onMounted(() => {
   fetchProducts();
@@ -80,21 +77,26 @@ onMounted(() => {
 </script>
 
 <style scoped>
+.card-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  margin-top: 20px;
+}
 
 .card {
   flex: 0 0 calc(20% - 20px);
   margin-bottom: 20px;
   box-sizing: border-box;
-  transition: transform 0.3s ease;
+  transition: background-color 0.3s ease;
 }
 
 .card-body {
   text-align: center;
 }
 
-.card:hover {
+.productcard:hover {
   background-color: #e0e0e0;
-  transform: scale(1.05);
 }
 
 .form-label {

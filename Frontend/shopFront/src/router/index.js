@@ -18,16 +18,6 @@ const routes = [
     name: 'LoginView',
     component: () => import('../views/LoginView.vue')
   },
-  {
-    path: '/product/:id',
-    name: 'ProductDetail',
-    component: () => import('../views/ProductDetailView.vue')
-  },
-  {
-    path: '/cart',
-    name: 'Cart',
-    component: () => import('../views/CartView.vue')
-  },
 
 ]
 
