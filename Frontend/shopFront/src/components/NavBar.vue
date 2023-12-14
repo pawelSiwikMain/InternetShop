@@ -8,6 +8,8 @@ const router = useRouter();
 const logout = () => {
   isLoggedIn.value = false;
   sessionStorage.setItem('isLoggedIn', `${false}`);
+  sessionStorage.removeItem('isLoggedIn');
+  sessionStorage.removeItem('userId');
   router.push('/login');
 };
 </script>
@@ -29,6 +31,9 @@ const logout = () => {
             </li>
             <li v-if="!isLoggedIn" class="nav-item">
               <router-link to="/register" class="nav-link" data-toggle="collapse" data-target=".navbar-collapse.show">Register</router-link>
+            </li>
+            <li v-if="isLoggedIn" class="nav-item">
+              <router-link to="/cart" class="nav-link" data-toggle="collapse" data-target=".navbar-collapse.show">Cart</router-link>
             </li>
             <li v-if="isLoggedIn" class="nav-item">
               <router-link to="/" class="nav-link" @click="logout" data-toggle="collapse" data-target=".navbar-collapse.show">Logout</router-link>

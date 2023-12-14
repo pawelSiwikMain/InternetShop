@@ -43,7 +43,9 @@ const logIn = () => {
         if (data && data.userEgzist === false || data && data.passwordCorect === false) {
           alert("Email or password does not match");
         } else {
-          sessionStorage.setItem('isLoggedIn', `${true}`);
+          const userId = data.userId;
+          sessionStorage.setItem('isLoggedIn', 'true');
+          sessionStorage.setItem('userId', userId);
           router.push('/');
         }
       })
