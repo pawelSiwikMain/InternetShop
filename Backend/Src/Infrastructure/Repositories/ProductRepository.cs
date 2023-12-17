@@ -42,8 +42,8 @@ namespace Infrastructure.Repositories
         }
         public IEnumerable<Product> GetByCategory(string category)
         {
-            var items = _context.Products.Where(p => p.Category == category);
-            return items;
+            return _context.Products.Where(p => p.Category == category).ToList();
+
         }
 
         public void Update(Product product)

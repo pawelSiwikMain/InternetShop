@@ -20,6 +20,13 @@ namespace ShopWebApi.Controllers
             var address = _addressService.GetByIdAddress(id);
             return Ok(address);
         }
+
+        [HttpGet("userId/{id}")]
+        public IActionResult GetByUserId(int id) 
+        {
+            var address = _addressService.GetByUserId(id);
+            return Ok(address);
+        }
         [HttpPost]
         public IActionResult Create(CreateAddressDto address)
         {
@@ -38,6 +45,5 @@ namespace ShopWebApi.Controllers
             _addressService.DeleteAddress(id);
             return NoContent();
         }
-
     }
 }

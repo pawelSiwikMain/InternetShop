@@ -11,6 +11,7 @@ namespace Application.Interfaces.DataService
     {
         AddressDto AddAddress(CreateAddressDto address);
         AddressDto GetByIdAddress(int id);
+        AddressDto GetByUserId(int Id);
         void UpdateAddress(UpdateAddressDto address);
         void DeleteAddress(int id);
         

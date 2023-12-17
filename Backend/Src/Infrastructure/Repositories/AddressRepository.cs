@@ -35,6 +35,10 @@ namespace Infrastructure.Repositories
         {
             return _context.Addresses.SingleOrDefault(a => a.Id == id);
         }
+        public Address GetByUserId(int userId)
+        {
+            return _context.Addresses.Where(a => a.UserId == userId).FirstOrDefault();  
+        }
         public void Update(Address address)
         {
             _context.Addresses.Update(address);
