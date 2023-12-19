@@ -9,7 +9,7 @@
               <h5 class="card-title">{{ item.name }}</h5>
               <p class="card-text">{{ item.price }} zł</p>
             </div>
-            <button class="btn btn-danger" @click="removeItem(item.id)">Usuń</button>
+            <button class="btn btn-danger" @click="removeItem(item.id)">Delete</button>
           </div>
         </div>
       </div>
