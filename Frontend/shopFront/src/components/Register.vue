@@ -2,12 +2,12 @@
   <form class="form-signin" @submit.prevent="submitForm">
     <img src="../assets/logo.png" alt="Logo">
     <h1 class="h3 mb-3 font-weight-normal">Please register</h1>
-    <input required v-model="email" type="email" class="form-control" placeholder="Email">
-    <input required v-model="name" class="form-control" placeholder="Name">
-    <input required v-model="lastName" class="form-control" placeholder="LastName">
-    <input required v-model="phone" type="tel" class="form-control" placeholder="Phone: xxx-xxx-xxx">
-    <input required v-model="password" type="password" class="form-control" placeholder="Password">
-    <input required v-model="repassword" type="password" class="form-control" placeholder="Re-type password">
+    <input required v-model="email" type="email" class="form-control mb-2" placeholder="Email">
+    <input required v-model="name" class="form-control mb-2" placeholder="Name">
+    <input required v-model="lastName" class="form-control mb-2" placeholder="LastName">
+    <input required v-model="phone" type="tel" class="form-control mb-2" placeholder="Phone">
+    <input required v-model="password" type="password" class="form-control mb-2" placeholder="Password">
+    <input required v-model="repassword" type="password" class="form-control mb-2" placeholder="Re-type password">
     <button class="btn btn-lg btn-primary btn-block" type="submit">Register</button>
   </form>
 </template>
@@ -75,7 +75,8 @@ const register = () => {
 .form-signin {
   width: 100%;
   max-width: 330px;
-  padding: 15px;
   margin: auto;
+  text-align: center;
+  align-items: center;
 }
 </style>
