@@ -10,6 +10,7 @@ const logout = () => {
   sessionStorage.setItem('isLoggedIn', `${false}`);
   sessionStorage.removeItem('isLoggedIn');
   sessionStorage.removeItem('userId');
+  sessionStorage.removeItem('addressId');
   router.push('/login');
 };
 </script>
