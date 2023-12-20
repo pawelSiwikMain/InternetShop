@@ -23,7 +23,7 @@
             <p class="card-text">{{ product.description }}</p>
             <p class="card-text"><strong>Category:</strong> {{ product.category }}</p>
             <p class="card-text"><strong>Price:</strong> {{ product.price }} zł</p>
-            <p class="card-text"><strong>Quantity:</strong> {{ product.quantityInStorage }}</p>
+            <p class="card-text"><strong>Quantity:</strong> {{ product.quqntityInStorage }}</p>
           </div>
         </div>
       </div>

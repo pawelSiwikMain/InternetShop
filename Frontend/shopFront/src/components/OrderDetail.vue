@@ -33,49 +33,11 @@
         <button class="btn btn-lg btn-primary btn-block" type="button" @click="updateAddress">Update address</button>
       </form>
     </div>
-
-    <div v-if="option === 2">
-      <form class="form-signin">
-        <hr>
-        <h1 class="h3 mb-3 font-weight-normal">Payment</h1>
-
-        <label for="expirationDate">Amount</label>
-        <input v-model="Amount" class="form-control" placeholder="Amount" required>
-
-        <label for="cardDetails">Card Details</label>
-        <div class="d-flex">
-          <input v-model="CardNumber" class="form-control mr-2" placeholder="CardNumber" required>
-          <input v-model="Cvv" class="form-control" placeholder="Cvv" required>
-        </div>
-
-        <label for="expirationDate">Expiration Date</label>
-        <div class="d-flex">
-          <select v-model="expirationMonth" class="form-control mr-2" id="expirationMonth" required>
-            <option value="" disabled selected>Select Month</option>
-            <option v-for="month in 12" :key="month" :value="month">{{ month }}</option>
-          </select>
-          <select v-model="expirationYear" class="form-control" id="expirationYear" required>
-            <option value="" disabled selected>Select Year</option>
-            <option v-for="year in 11" :key="year" :value="2023 + year">{{ 2023 + year }}</option>
-          </select>
-        </div>
-
-        <label for="expirationDate">Card type</label>
-        <select v-model="CardType" class="form-control" required>
-          <option value="" disabled selected>Card Type</option>
-          <option value="Visa">Visa</option>
-          <option value="MasterCard">MasterCard</option>
-        </select>
-
-        <button class="btn btn-lg btn-primary btn-block" type="button" @click="payAndOrder">Pay and order</button>
-
-      </form>
-    </div>
   </div>
 </template>
 
 <script setup>
-import { ref, onMounted, computed } from 'vue';
+import { ref, onMounted } from 'vue';
 import { useRouter } from 'vue-router';
 
 const router = useRouter();
@@ -89,21 +51,6 @@ const street = ref('');
 const city = ref('');
 const postCode = ref('');
 const localNumber = ref('');
-
-const Amount = ref('');
-const Cvv = ref('');
-const CardNumber = ref('');
-const CardType = ref('');
-
-const expirationMonth = ref('');
-const expirationYear = ref('');
-
-const formattedExpirationDate = computed(() => {
-  if (expirationMonth.value && expirationYear.value) {
-    return `${String(expirationMonth.value).padStart(2, '0')}/${expirationYear.value}`;
-  }
-  return '';
-});
 
 const getUserAddress = async () => {
   try {
@@ -175,66 +122,6 @@ const updateAddress = async () => {
   }
 };
 
-const payAndOrder = async () => {
-  const requestData = {
-    Amount: Amount.value,
-    Cvv: Cvv.value,
-    ExpirationDate: formattedExpirationDate.value,
-    CardNumber: CardNumber.value,
-    CardType: CardType.value,
-  };
-
-  const requestOptions = {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify(requestData),
-  };
-
-  try {
-    const response = await fetch('https://localhost:44396/api/Payment', requestOptions);
-
-    if (response.ok) {
-      await createOrder();
-    } else {
-      console.error('Payment failed');
-    }
-  } catch (error) {
-    console.error('Error during payment:', error);
-  }
-};
-
-const createOrder = async () => {
-  const orderData = {
-    orderDto: {
-      userId: sessionStorage.getItem('userId'),
-      addressId: sessionStorage.getItem('addressId'),
-    },
-    items: cartItems.value.map((item) => ({
-      name: item.name,
-      quqntity: item.quqntityInCart,
-    })),
-  };
-
-  const requestOptions = {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify(orderData),
-  };
-
-  try {
-    const response = await fetch('https://localhost:44396/api/Orders', requestOptions);
-
-    if (response.ok) {
-      alert('Order created successfully');
-      router.push({ name: 'Home' });
-
-    } else {
-      console.error('Order creation failed');
-    }
-  } catch (error) {
-    console.error('Error during order creation:', error);
-  }
-};
 
 const goToAddressFormView = () => {
   router.push({ name: 'AddressForm' });
@@ -245,7 +132,7 @@ const changeAddress = () => {
 };
 
 const payACard = () => {
-  option.value = 2;
+  router.push({ name: "Payment" });
 }
 
 onMounted(() => {
