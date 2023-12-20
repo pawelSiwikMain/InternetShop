@@ -38,6 +38,21 @@ const routes = [
     name: 'AddressForm',
     component: () => import('../views/AddressFormView.vue')
   },
+  {
+    path: '/admin/products',
+    name: 'ManageProducts',
+    component: () => import('../views/ManageProductsView.vue')
+  },
+  {
+    path: '/admin/orders',
+    name: 'ManageOrders',
+    component: () => import('../views/ManageOrdersView.vue')
+  },
+  {
+    path: '/payment',
+    name: 'Payment',
+    component: () => import('../views/PaymentView.vue')
+  },
 
 ]
 

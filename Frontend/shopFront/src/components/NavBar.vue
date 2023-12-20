@@ -5,14 +5,18 @@ import { useRouter } from 'vue-router';
 const isLoggedIn = ref(sessionStorage.getItem('isLoggedIn') === 'true');
 const router = useRouter();
 
+const role = sessionStorage.getItem('role');
+const isAdmin = role === 'admin';
 const logout = () => {
   isLoggedIn.value = false;
   sessionStorage.setItem('isLoggedIn', `${false}`);
   sessionStorage.removeItem('isLoggedIn');
   sessionStorage.removeItem('userId');
   sessionStorage.removeItem('addressId');
+  sessionStorage.removeItem('role');
   router.push('/login');
 };
+
 </script>
 
 <template>
@@ -27,18 +31,37 @@ const logout = () => {
       <div class="collapse navbar-collapse" id="navbarNav">
         <div class="ml-auto">
           <ul class="navbar-nav">
-            <li v-if="!isLoggedIn" class="nav-item">
+
+<!--            ============ Nie zalogowany użytkownik ===============-->
+
+            <li v-if="!isLoggedIn && !isAdmin" class="nav-item">
               <router-link to="/login" class="nav-link" data-toggle="collapse" data-target=".navbar-collapse.show">Login</router-link>
             </li>
-            <li v-if="!isLoggedIn" class="nav-item">
+            <li v-if="!isLoggedIn && !isAdmin" class="nav-item">
               <router-link to="/register" class="nav-link" data-toggle="collapse" data-target=".navbar-collapse.show">Register</router-link>
             </li>
-            <li v-if="isLoggedIn" class="nav-item">
+
+<!--            ============ Zalogowany użytkownik ===============-->
+
+            <li v-if="isLoggedIn && !isAdmin" class="nav-item">
               <router-link to="/cart" class="nav-link" data-toggle="collapse" data-target=".navbar-collapse.show">Cart</router-link>
             </li>
-            <li v-if="isLoggedIn" class="nav-item">
+            <li v-if="isLoggedIn && !isAdmin" class="nav-item">
               <router-link to="/" class="nav-link" @click="logout" data-toggle="collapse" data-target=".navbar-collapse.show">Logout</router-link>
             </li>
+
+<!--            ============ Admin options ===============-->
+
+            <li v-if="isLoggedIn && isAdmin" class="nav-item">
+              <router-link to="/admin/products" class="nav-link" data-toggle="collapse" data-target=".navbar-collapse.show">Manage Products</router-link>
+            </li>
+            <li v-if="isLoggedIn && isAdmin" class="nav-item">
+              <router-link to="/admin/orders" class="nav-link" data-toggle="collapse" data-target=".navbar-collapse.show">Manage Orders</router-link>
+            </li>
+            <li v-if="isLoggedIn && isAdmin" class="nav-item">
+              <router-link to="/" class="nav-link" @click="logout" data-toggle="collapse" data-target=".navbar-collapse.show">Logout</router-link>
+            </li>
+
           </ul>
         </div>
       </div>
