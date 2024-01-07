@@ -37,7 +37,7 @@
 </template>
 
 <script setup>
-import { computed, ref } from "vue";
+import { computed ,ref } from "vue";
 import { useRouter } from "vue-router";
 
 const router = useRouter();
@@ -61,21 +61,23 @@ const formattedExpirationDate = computed(() => {
 const payAndOrder = async () => {
 
   const requestData = {
-    Amount: Amount.value,
-    Cvv: Cvv.value,
-    ExpirationDate: formattedExpirationDate.value,
-    CardNumber: CardNumber.value,
-    CardType: CardType.value,
+    "amount": Amount.value,
+      "cvv": Cvv.value,
+      "expirationDate": formattedExpirationDate.value,
+      "cardNumber": CardNumber.value,
+      "cardType": CardType.value
   };
 
-  const requestOptions = {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify(requestData),
-  };
 
   try {
-    const response = await fetch('https://localhost:44396/api/Payment', requestOptions);
+    const response = await fetch('https://localhost:44396/api/Payment', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(requestData),
+    });
+
     const responseData = await response.json();
 
     console.log('Response:', response.status, response.headers, responseData);
