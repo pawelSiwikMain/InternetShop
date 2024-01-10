@@ -1,0 +1,48 @@
+name: internetshop-pipeline
+on:
+  push:
+    branches: [ "master" ]
+  pull_request:
+    branches: [ "master" ]
+
+jobs:
+
+  build:
+
+    strategy:
+      matrix:
+        configuration: [Debug, Release]
+
+    runs-on: windows-latest 
+                            
+
+    env:
+      Solution_Name: Shop.sln                         
+      Test_Project_Path: Backend/Src/ShopWebApi/ShopWebApi.csproj                
+
+    steps:
+    - name: Checkout Repository
+      uses: actions/checkout@v2
+
+    # Install the .NET Core workload
+    - name: Install .NET Core
+      uses: actions/setup-dotnet@v3
+      with:
+        dotnet-version: 6.0.x
+        
+    - name: Set up .NET Core
+      uses: actions/setup-dotnet@v2
+      with:
+        dotnet-version: 6.0.100
+          
+    - name: Setup MSBuild.exe
+      uses: microsoft/setup-msbuild@v1.0.2
+
+
+    - name: Restore Dependencies
+      run: |
+        dotnet restore
+        msbuild Shop.sln /t:Restore /p:Configuration=$env:Configuration
+
+    - name: Build
+      run: msbuild Shop.sln /p:Configuration=$env:Configuration
