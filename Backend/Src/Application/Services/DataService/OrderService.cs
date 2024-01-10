@@ -39,7 +39,7 @@ namespace Application.Services.DataService
                 Id = newOrder.Id,
                 AddressId = newOrder.AddressId,
                 UserId = newOrder.UserId,
-                OrderItemDtos = itemsList
+                OrderItemDtos = _mapper.Map<IEnumerable<OrderItemDto>>(itemsList).ToList()
             };
             return response;
         }
@@ -57,7 +57,7 @@ namespace Application.Services.DataService
 
         public IEnumerable<OrderDto> GetAllOrders()
         {
-            var orders = _orderRepository.GetAll();
+            var orders = _orderRepository.GetAll().ToList();
             var listOfOrders = new List<OrderDto>();
             foreach (var item in orders)
             {
@@ -66,7 +66,7 @@ namespace Application.Services.DataService
                     Id = item.Id,
                     AddressId = item.AddressId,
                     UserId = item.UserId,
-                    OrderItemDtos = _itemRepository.GetAllForOrder(item.Id)
+                    OrderItemDtos = _mapper.Map<IEnumerable<OrderItemDto>>(_itemRepository.GetAllForOrder(item.Id)).ToList()
                 };
                 listOfOrders.Add(orderDto);
             }
@@ -81,7 +81,7 @@ namespace Application.Services.DataService
                 Id = order.Id,
                 AddressId = order.AddressId,
                 UserId = order.UserId,
-                OrderItemDtos = _itemRepository.GetAllForOrder(id)
+                OrderItemDtos = _mapper.Map<IEnumerable<OrderItemDto>>(_itemRepository.GetAllForOrder(id)).ToList()
             };
             return orderDto;
         }

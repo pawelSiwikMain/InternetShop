@@ -7,11 +7,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{607A1AA7-AAA
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Domain", "Domain\Domain.csproj", "{01B0235D-F817-42A2-9BB8-1704C6447F21}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Application", "Application\Application.csproj", "{36EEFFB6-F2F7-4BFA-A814-86C7D74CE7B6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Application", "Application\Application.csproj", "{36EEFFB6-F2F7-4BFA-A814-86C7D74CE7B6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Infrastructure", "Infrastructure\Infrastructure.csproj", "{7E0659A0-BFD7-4455-93E3-1C5C54F98522}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Infrastructure", "Infrastructure\Infrastructure.csproj", "{7E0659A0-BFD7-4455-93E3-1C5C54F98522}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShopWebApi", "ShopWebApi\ShopWebApi.csproj", "{719A9F60-9FE5-4BF3-80B3-02ADAE61A2AE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ShopWebApi", "ShopWebApi\ShopWebApi.csproj", "{719A9F60-9FE5-4BF3-80B3-02ADAE61A2AE}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
