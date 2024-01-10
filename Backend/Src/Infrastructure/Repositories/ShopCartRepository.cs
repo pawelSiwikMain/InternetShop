@@ -38,7 +38,7 @@ namespace Infrastructure.Repositories
 
         public IEnumerable<ShopCart> GetAllForUser(int userId)
         {
-            return _context.ShopCarts.Where(s => s.UserId == userId);
+            return _context.ShopCarts.Where(s => s.UserId == userId).ToList();
         }
 
         public void Update(ShopCart shopCart)

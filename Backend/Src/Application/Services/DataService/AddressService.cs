@@ -41,6 +41,12 @@ namespace Application.Services.DataService
             return _mapper.Map<AddressDto>(address);
         }
 
+        public AddressDto GetByUserId(int id)
+        {
+            var address =_addressRepository.GetByUserId(id);
+            return _mapper.Map<AddressDto>(address);
+        }
+
         public void UpdateAddress(UpdateAddressDto address)
         {
             var existingAddress = _addressRepository.Get(address.Id);

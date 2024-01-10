@@ -10,6 +10,7 @@ namespace Domain.interfaces
     public interface IAddressRepository
     {
         Address Get(int id);
+        public Address GetByUserId(int userId);
         Address Add(Address address);
         void Update(Address address);
         void Delete(Address address);
