@@ -39,7 +39,7 @@ jobs:
 
     # Restore the application to populate the obj folder with RuntimeIdentifiers
     - name: Restore the application
-      run: msbuild $env:Backend/Src/Shop.sln 
+      run: msbuild Backend/Src/Shop.sln 
       env:
         Configuration: ${{ matrix.configuration }}
         
