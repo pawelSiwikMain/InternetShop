@@ -38,7 +38,7 @@ jobs:
       uses: microsoft/setup-msbuild@v1.0.2
       
     - name: Restore NuGet Packages
-      run: msbuild Backend/Src/Shop.sln
+      run: dotnet restore $env:Backend/Src/Shop.sln --configuration $env:Configuration
 
     # Restore the application to populate the obj folder with RuntimeIdentifiers
     - name: Restore the application
