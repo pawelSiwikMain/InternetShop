@@ -1,5 +1,5 @@
 
-name: .NET
+name: internetshop-pipeline
 
 on:
   push:
