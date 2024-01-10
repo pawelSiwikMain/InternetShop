@@ -12,12 +12,12 @@ namespace Application.Dtos.OrderDtos
         public int Id { get; set; }
         public int UserId { get; set; }
         public int AddressId { get; set; }
-        public IEnumerable<OrderItem> OrderItemDtos { get; set; }
+        public IEnumerable<OrderItemDto> OrderItemDtos { get; set; }
         public OrderDto()
         {
         }
 
-        public OrderDto(int id, int userId, int addressId, IEnumerable<OrderItem> orderItemDtos)
+        public OrderDto(int id, int userId, int addressId, IEnumerable<OrderItemDto> orderItemDtos)
         {
             Id = id;
             UserId = userId;
