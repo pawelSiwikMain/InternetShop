@@ -12,7 +12,6 @@ jobs:
 
     runs-on: windows-latest  
 
-
     env:
       Solution_Name: Backend/Src/Shop.sln                    
       Test_Project_Path: Backend/Src/ShopWebApi/ShopWebApi.csproj                
@@ -41,13 +40,16 @@ jobs:
       run: msbuild Backend/Src/Shop.sln
       
   deploy:
-
+  
     needs: build
     runs-on: windows-latest
 
     steps:
       - name: Package into Zip
-        run: Compress-Archive -Path Backend/Src/* -DestinationPath shop-artifacts.zip
+        run: |
+          $sourcePath = "Backend/Src/*"
+          $destinationPath = "shop-artifacts.zip"
+          Compress-Archive -Path $sourcePath -DestinationPath $destinationPath
 
       - name: Publish Artifacts
         uses: actions/upload-artifact@v2
