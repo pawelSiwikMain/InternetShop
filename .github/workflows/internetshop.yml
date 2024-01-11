@@ -42,11 +42,12 @@ jobs:
       
   deploy:
 
+    needs: build
     runs-on: windows-latest
 
     steps:
       - name: Package into Zip
-        run: Compress-Archive -Path Backend -DestinationPath shop-artifacts.zip
+        run: Compress-Archive -Path Backend/Src -DestinationPath shop-artifacts.zip
 
       - name: Publish Artifacts
         uses: actions/upload-artifact@v2
