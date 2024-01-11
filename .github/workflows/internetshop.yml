@@ -9,10 +9,6 @@ on:
 jobs:
 
   build:
-    
-    strategy:
-      matrix:
-        configuration: [Debug]
 
     runs-on: windows-latest  
 
@@ -40,20 +36,17 @@ jobs:
 
     - name: Restore the application
       run: msbuild Backend/Src/Shop.sln 
-      env:
-        Configuration: ${{ matrix.configuration }}
         
     - name: Build solution
       run: msbuild Backend/Src/Shop.sln
       
   deploy:
-  
-    needs: build
+
     runs-on: windows-latest
 
     steps:
       - name: Package into Zip
-        run: Compress-Archive -Path Backend/Src/Shop/bin/${{ matrix.configuration }}/netcoreapp3.1 -DestinationPath shop-artifacts.zip
+        run: Compress-Archive -Path Backend -DestinationPath shop-artifacts.zip
 
       - name: Publish Artifacts
         uses: actions/upload-artifact@v2
