@@ -16,7 +16,7 @@ Jest przeznaczona dla administratora i użytkowników sklepu meblowego.
 Instrukcje dotyczące tego, jak uruchomić projekt lokalnie na maszynie deweloperskiej.
 
 ```bash
-git clone https://github.com/pawelSiwikMain/InternetShop/new/master)https://github.com/pawelSiwikMain/InternetShop/new/master
+git clone https://github.com/pawelSiwikMain/InternetShop/new/master
 cd InternetShop
 npm install
 npm start
