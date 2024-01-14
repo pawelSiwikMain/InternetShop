@@ -47,9 +47,9 @@ jobs:
     steps:
       - name: Package into Zip
         run: |
-          $sourcePath = "Backend\Src\*"
+          $sourcePath = Get-ChildItem -Path "Backend/Src/*" -Recurse
           $destinationPath = "shop-artifacts.zip"
-          Compress-Archive -Path $sourcePath -DestinationPath $destinationPath
+          Compress-Archive -Path $sourcePath.FullName -DestinationPath $destinationPath
 
       - name: Publish Artifacts
         uses: actions/upload-artifact@v2
