@@ -47,7 +47,7 @@ jobs:
     steps:
       - name: Package into Zip
         run: |
-          $sourcePath = Backend/Src/ShopWebApi
+          $sourcePath = "Backend/Src/ShopWebApi"
           $destinationPath = "shop-artifacts.zip"
           Compress-Archive -Path $sourcePath -DestinationPath $destinationPath
 
