@@ -137,4 +137,18 @@ onMounted(() => {
   width: 100%;
   margin-top: 10px;
 }
+
+.card {
+  width: 100%;
+  height: 100%;
+}
+
+.card-body {
+  flex-grow: 1;
+}
+
+.card-img-top {
+  max-height: 200px;
+  max-width: 200px;
+}
 </style>

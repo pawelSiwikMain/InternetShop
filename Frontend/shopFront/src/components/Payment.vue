@@ -31,7 +31,7 @@
       <option value="MasterCard">MasterCard</option>
     </select>
 
-    <button class="btn btn-lg btn-primary btn-block" type="button" @click="Process">Pay and order</button>
+    <button class="btn btn-lg btn-primary btn-block mt-3" type="button" @click="Process">Pay and order</button>
 
   </form>
 </template>
@@ -105,7 +105,7 @@ const Process = async () => {
       cartsItems.forEach(function callback(currentValue) {
         const obj = {
           name: currentValue.name,
-          quantity: currentValue.quqntityInCart,
+          quqntity: currentValue.quqntityInCart,
         };
         orderItems.push(obj);
         removeItem(currentValue.id);

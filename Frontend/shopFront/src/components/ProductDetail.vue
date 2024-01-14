@@ -12,7 +12,7 @@
           <p class="description">{{ product.description }}</p>
           <p><strong>Category:</strong> {{ product.category }}</p>
           <p><strong>Price:</strong> {{ product.price }} zł</p>
-          <p><strong>Quantity:</strong> {{ product.quantityInStorage }}</p>
+          <p><strong>Quantity:</strong> {{ product.quqntityInStorage }}</p>
           <button v-if="auth" @click="addToCart" class="btn btn-primary">Add to Cart</button>
         </div>
       </div>
@@ -95,6 +95,11 @@ onMounted(() => {
 .product-image {
   text-align: center;
   margin-bottom: 20px;
+}
+
+.img-fluid{
+  max-width: 500px;
+  max-height: 500px;
 }
 
 .product-details {

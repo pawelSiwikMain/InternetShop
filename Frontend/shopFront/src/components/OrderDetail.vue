@@ -54,7 +54,7 @@ const localNumber = ref('');
 
 const getUserAddress = async () => {
   try {
-    const response = await fetch(`https://localhost:44396/api/Addresses/user/${userId}`);
+    const response = await fetch(`https://localhost:44396/api/Addresses/${userId}`);
 
     if (response.ok) {
       const responseData = await response.text();
