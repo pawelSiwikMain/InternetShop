@@ -44,11 +44,13 @@ jobs:
     steps:
       - name: Package into Zip
         run: |
-          $destinationPath = "Backend/Artifacts"
+          $destinationPath = "Backend\Artifacts"
+          Set-Location -Path $GITHUB_WORKSPACE
           Compress-Archive -Path Backend\Output -DestinationPath $destinationPath
+
 
       - name: Publish Artifacts
         uses: actions/upload-artifact@v2
         with:
           name: artifacts
-          path: Backend/Artifacts
+          path: Backend\Artifacts
