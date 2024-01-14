@@ -32,12 +32,9 @@ jobs:
       
     - name: Restore NuGet Packages
       run: dotnet restore Backend/Src/Shop.sln 
-
-    - name: Restore the application
-      run: msbuild Backend/Src/Shop.sln 
         
     - name: Build solution
-      run: msbuild Backend/Src/Shop.sln
+      run: msbuild Backend/Src/Shop.sln /t:Build /p:OutDir=Backend\Output
       
   deploy:
   
@@ -47,9 +44,8 @@ jobs:
     steps:
       - name: Package into Zip
         run: |
-          $sourcePath = Get-ChildItem -Path "D:\a\InternetShop\InternetShop\Backend\Src\*" -Recurse
           $destinationPath = ".github/workflows/shop-artifacts.zip"
-          Compress-Archive -Path $sourcePath -DestinationPath $destinationPath
+          Compress-Archive -Path Backend\Output -DestinationPath $destinationPath
 
       - name: Publish Artifacts
         uses: actions/upload-artifact@v2
