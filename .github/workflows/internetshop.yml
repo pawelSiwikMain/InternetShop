@@ -47,7 +47,7 @@ jobs:
     steps:
       - name: Package into Zip
         run: |
-          $sourcePath = Get-ChildItem -Path "Backend/Src/*" -Recurse
+          $sourcePath = Get-ChildItem -Path "D:\a\InternetShop\InternetShop\Backend\Src\*" -Recurse
           $destinationPath = ".github/workflows/shop-artifacts.zip"
           Compress-Archive -Path $sourcePath -DestinationPath $destinationPath
 
