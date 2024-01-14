@@ -10,12 +10,7 @@ jobs:
 
   build:
 
-    strategy:
-      matrix:
-        configuration: [Debug]
-
     runs-on: windows-latest  
-
 
     env:
       Solution_Name: Backend/Src/Shop.sln                    
@@ -30,7 +25,7 @@ jobs:
     - name: Install .NET Core
       uses: actions/setup-dotnet@v3
       with:
-        dotnet-version: 6.0.x
+        dotnet-version: 8.0.x
 
     - name: Setup MSBuild.exe
       uses: microsoft/setup-msbuild@v1.0.2
@@ -40,8 +35,24 @@ jobs:
 
     - name: Restore the application
       run: msbuild Backend/Src/Shop.sln 
-      env:
-        Configuration: ${{ matrix.configuration }}
         
     - name: Build solution
-      run: msbuild Backend/Src/Shop.sln 
+      run: msbuild Backend/Src/Shop.sln
+      
+  deploy:
+  
+    needs: build
+    runs-on: windows-latest
+
+    steps:
+      - name: Package into Zip
+        run: |
+          $sourcePath = "Backend/Src/*"
+          $destinationPath = "shop-artifacts.zip"
+          Compress-Archive -Path $sourcePath -DestinationPath $destinationPath
+
+      - name: Publish Artifacts
+        uses: actions/upload-artifact@v2
+        with:
+          name: artifacts
+          path: shop-artifacts.zip
