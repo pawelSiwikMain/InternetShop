@@ -34,7 +34,7 @@ jobs:
       run: dotnet restore Backend/Src/Shop.sln 
         
     - name: Build solution
-      run: msbuild Backend/Src/Shop.sln /t:Build /p:OutDir=Backend\Output
+      run: msbuild Backend/Src/Shop.sln /t:Build /p:OutDir=Backend/Output
       
   deploy:
   
@@ -44,11 +44,11 @@ jobs:
     steps:
       - name: Package into Zip
         run: |
-          $destinationPath = ".github/workflows/shop-artifacts.zip"
+          $destinationPath = "Backend/Artifacts"
           Compress-Archive -Path Backend\Output -DestinationPath $destinationPath
 
       - name: Publish Artifacts
         uses: actions/upload-artifact@v2
         with:
           name: artifacts
-          path: shop-artifacts.zip
+          path: Backend/Artifacts
