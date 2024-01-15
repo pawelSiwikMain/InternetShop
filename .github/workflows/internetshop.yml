@@ -44,7 +44,7 @@ jobs:
     steps:
       - name: Package into Zip
         run: |
-          Compress-Archive -Path Backend\Output
+          Compress-Archive -Path Backend\Output -DestinationPath Backend\Output
 
 
       - name: Publish Artifacts
