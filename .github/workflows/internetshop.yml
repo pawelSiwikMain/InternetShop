@@ -44,9 +44,7 @@ jobs:
     steps:
       - name: Package into Zip
         run: |
-          $destinationPath = "Backend\Artifacts"
-          Set-Location -Path $GITHUB_WORKSPACE
-          Compress-Archive -Path Backend\Output -DestinationPath $destinationPath
+          Compress-Archive -Path Backend\Output -DestinationPath Backend\Artifacts
 
 
       - name: Publish Artifacts
