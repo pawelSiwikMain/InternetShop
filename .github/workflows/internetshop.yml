@@ -45,7 +45,7 @@ jobs:
       - name: Package into Zip
         run: |
           New-Item -ItemType Directory -Force -Path Backend/Artifacts
-          Compress-Archive -Path Backend/src -DestinationPath "$(Get-Location)/Backend/Artifacts/artifacts.zip"
+          Compress-Archive -Path Backend/Output\ -DestinationPath "$(Get-Location)/Backend/Artifacts/artifacts.zip"
         shell: pwsh
 
 
