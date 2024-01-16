@@ -37,20 +37,33 @@ jobs:
         run: msbuild ${{ env.Solution_Name }} /t:Build /p:OutDir=Backend\Output
 
   deploy:
-
+  
     needs: build
     runs-on: windows-latest
-
+  
     steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+  
+      - name: Setup MSBuild.exe
+        uses: microsoft/setup-msbuild@v1.0.2
+  
+      - name: Create Artifacts Directory
+        run: New-Item -ItemType Directory -Force -Path Backend\Artifacts
+        shell: pwsh
+  
       - name: Package into Zip
         run: |
-          Compress-Archive -Path Backend\Output -DestinationPath Backend\Artifacts
+          if (Test-Path Backend\Output) {
+            Compress-Archive -Path Backend\Output\* -DestinationPath Backend\Artifacts\artifacts.zip
+          } else {
+            Write-Error "Backend\Output directory does not exist."
+          }
         shell: pwsh
-        working-directory: ${{ github.workspace }}
-
-
+  
       - name: Publish Artifacts
         uses: actions/upload-artifact@v2
         with:
           name: artifacts
           path: Backend\Artifacts\artifacts.zip
+
