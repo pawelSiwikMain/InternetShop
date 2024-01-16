@@ -46,6 +46,7 @@ jobs:
         run: |
           Compress-Archive -Path Backend\Output -DestinationPath Backend\Artifacts
         shell: pwsh
+        working-directory: ${{ github.workspace }}
 
 
       - name: Publish Artifacts
