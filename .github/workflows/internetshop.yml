@@ -44,7 +44,10 @@ jobs:
     steps:
       - name: Package into Zip
         run: |
-          Compress-Archive -Path Backend/Output -DestinationPath Backend/Artifacts/artifacts.zip
+          New-Item -ItemType Directory -Force -Path Backend/Artifacts
+          Compress-Archive -Path Backend/Output -DestinationPath "$(Get-Location)/Backend/Artifacts/artifacts.zip"
+        shell: pwsh
+
 
       - name: Publish Artifacts
         uses: actions/upload-artifact@v2
