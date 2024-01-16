@@ -34,7 +34,7 @@ jobs:
         run: dotnet restore ${{ env.Solution_Name }}
 
       - name: Build solution
-        run: msbuild ${{ env.Solution_Name }} /t:Build /p:OutDir=/Backend/Artifacts
+        run: msbuild ${{ env.Solution_Name }} /t:Build /p:OutDir=Backend\Artifacts
 
   deploy:
 
@@ -44,8 +44,8 @@ jobs:
     steps:
       - name: Package into Zip
         run: |
-          New-Item -ItemType Directory -Force -Path Backend/Artifacts
-          Compress-Archive -Path /Backend/Artifacts -DestinationPath "$(Get-Location)/Backend/Artifacts/artifacts.zip"
+          New-Item -ItemType Directory -Force -Path Backend\Artifacts
+          Compress-Archive -Path Backend\Artifacts -DestinationPath "$(Get-Location)/Backend/Artifacts/artifacts.zip"
         shell: pwsh
 
 
