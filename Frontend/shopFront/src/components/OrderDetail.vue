@@ -23,14 +23,14 @@
     </div>
 
     <div v-if="option === 1">
-      <form class="form-signin">
+      <form class="form-signin" @submit.prevent="updateAddress">
         <img src="../assets/logo.png" alt="Logo">
         <h1 class="h3 mb-3 font-weight-normal">Update address</h1>
-        <input v-model="street" class="form-control" placeholder="Street" required>
-        <input v-model="city" class="form-control" placeholder="City" required>
-        <input v-model="postCode" class="form-control" placeholder="Post Code" required>
-        <input v-model="localNumber" class="form-control" placeholder="Local Number" required>
-        <button class="btn btn-lg btn-primary btn-block" type="button" @click="updateAddress">Update address</button>
+        <input v-model="street" class="form-control" placeholder="Street" pattern="[A-Za-z0-9\s]{1,50}" required>
+        <input v-model="city" class="form-control" placeholder="City" pattern="[A-Za-z\s]{1,50}" required>
+        <input v-model="postCode" class="form-control" placeholder="Post Code ex. 01-123" pattern="[0-9]{2}-[0-9]{3}" required>
+        <input v-model="localNumber" class="form-control" placeholder="Local Number" pattern="[0-9]{1,5}">
+        <button class="btn btn-lg btn-primary btn-block" type="submit">Update address</button>
       </form>
     </div>
   </div>
@@ -54,7 +54,7 @@ const localNumber = ref('');
 
 const getUserAddress = async () => {
   try {
-    const response = await fetch(`https://localhost:44396/api/Addresses/${userId}`);
+    const response = await fetch(`https://localhost:44396/api/Addresses/userId/${userId}`);
 
     if (response.ok) {
       const responseData = await response.text();

@@ -8,9 +8,7 @@ const router = useRouter();
 const role = sessionStorage.getItem('role');
 const isAdmin = role === 'admin';
 const logout = () => {
-  isLoggedIn.value = false;
-  sessionStorage.setItem('isLoggedIn', `${false}`);
-  sessionStorage.removeItem('isLoggedIn');
+  sessionStorage.setItem('isLoggedIn', 'false');
   sessionStorage.removeItem('userId');
   sessionStorage.removeItem('addressId');
   sessionStorage.removeItem('role');

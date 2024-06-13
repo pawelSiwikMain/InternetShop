@@ -5,7 +5,7 @@
     <input required v-model="email" type="email" class="form-control mb-2" placeholder="Email">
     <input required v-model="name" class="form-control mb-2" placeholder="Name">
     <input required v-model="lastName" class="form-control mb-2" placeholder="LastName">
-    <input required v-model="phone" type="tel" class="form-control mb-2" placeholder="Phone">
+    <input required v-model="phone" type="tel" class="form-control mb-2" placeholder="Phone ex.123456789" pattern="[0-9]{9}">
     <input required v-model="password" type="password" class="form-control mb-2" placeholder="Password">
     <input required v-model="repassword" type="password" class="form-control mb-2" placeholder="Re-type password">
     <button class="btn btn-lg btn-primary btn-block" type="submit">Register</button>

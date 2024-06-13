@@ -13,7 +13,21 @@
           <p><strong>Category:</strong> {{ product.category }}</p>
           <p><strong>Price:</strong> {{ product.price }} zł</p>
           <p><strong>Quantity:</strong> {{ product.quqntityInStorage }}</p>
-          <button v-if="auth" @click="addToCart" class="btn btn-primary">Add to Cart</button>
+
+          <div class="mt-3" v-if="addToCartMessage">
+            <p class="text-success">{{ addToCartMessage }}</p>
+          </div>
+
+          <div class="mt-5">
+            <button v-if="isLoggedIn" @click="addToCart" class="btn btn-primary">Add to Cart</button>
+            <h4 v-else class="mt-3">
+              Please <router-link :to="{ name: 'LoginView' }">log in</router-link> to add to cart.
+            </h4>
+          </div>
+
+        </div>
+        <div class="mt-3">
+          <button class="btn btn-primary ml-3" @click="goToHomePage">Back to home</button>
         </div>
       </div>
     </div>
@@ -23,11 +37,15 @@
 <script setup>
 import { ref, onMounted } from 'vue';
 import { useRoute } from 'vue-router';
+import { useRouter } from 'vue-router';
 
 const product = ref(null);
 const route = useRoute();
+const router = useRouter();
 const id = route.params.id;
-const auth = sessionStorage.getItem('isLoggedIn');
+const isLoggedIn = sessionStorage.getItem('isLoggedIn') === 'true'; // Konwertujemy na boolean
+
+const addToCartMessage = ref('');
 
 const fetchProductDetails = async () => {
   try {
@@ -55,8 +73,6 @@ const addToCart = async () => {
         urlToOffer: product.value.urlToPicture,
       };
 
-      console.log('Add to cart:', cartItem);
-
       try {
         const response = await fetch('https://localhost:44396/api/ShopCarts', {
           method: 'POST',
@@ -68,23 +84,22 @@ const addToCart = async () => {
 
         if (response.ok) {
           console.log('Successful add to cart');
-
+          addToCartMessage.value = 'Product added to cart successfully!';
         } else {
           console.error("Error adds product to cart", response.statusText);
-          alert("Error ads product to cart");
+          addToCartMessage.value = 'Failed to add product to cart';
         }
       } catch (error) {
         console.error("Error adds product to cart", error);
-        alert("Error ads product to cart");
+        addToCartMessage.value = 'Failed to add product to cart';
       }
-    } else {
-      console.error('No auth user');
-      alert("Log in to place an order");
     }
-  } else {
-    console.error('Error: product or product.id is undefined');
   }
 };
+
+const goToHomePage = () => {
+  router.push({ name: 'Home' })
+}
 
 onMounted(() => {
   fetchProductDetails();
@@ -97,7 +112,7 @@ onMounted(() => {
   margin-bottom: 20px;
 }
 
-.img-fluid{
+.img-fluid {
   max-width: 500px;
   max-height: 500px;
 }

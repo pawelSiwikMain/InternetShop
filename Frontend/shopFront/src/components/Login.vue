@@ -42,6 +42,7 @@ const logIn = () => {
       .then(data => {
         if (data && data.userEgzist === false || data && data.passwordCorect === false) {
           alert("Email or password does not match");
+          return;
         }
           if (data.userIsAdmin === true) {
             sessionStorage.setItem('role', 'admin');

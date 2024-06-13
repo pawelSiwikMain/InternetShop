@@ -1,15 +1,15 @@
 <template>
-  <form class="form-payment">
+  <form class="form-payment" @submit.prevent="Process">
     <hr>
     <h1 class="h3 mb-3 font-weight-normal">Payment</h1>
 
-    <label for="expirationDate">Amount</label>
-    <input v-model="Amount" class="form-control" placeholder="Amount" required>
+    <label for="amount">Amount</label>
+    <input v-model="Amount" class="form-control" placeholder="Amount" required readonly>
 
     <label for="cardDetails">Card Details</label>
     <div class="d-flex">
-      <input v-model="CardNumber" class="form-control mr-2" placeholder="CardNumber" required>
-      <input v-model="Cvv" class="form-control" placeholder="Cvv" required>
+      <input v-model="CardNumber" class="form-control mr-2" placeholder="CardNumber" pattern="[0-9]{16}" maxlength="16" required>
+      <input v-model="Cvv" class="form-control" placeholder="Cvv" pattern="[0-9]{3}" maxlength="3" required>
     </div>
 
     <label for="expirationDate">Expiration Date</label>
@@ -24,26 +24,27 @@
       </select>
     </div>
 
-    <label for="expirationDate">Card type</label>
+    <label for="cardType">Card Type</label>
     <select v-model="CardType" class="form-control" required>
       <option value="" disabled selected>Card Type</option>
       <option value="Visa">Visa</option>
       <option value="MasterCard">MasterCard</option>
     </select>
 
-    <button class="btn btn-lg btn-primary btn-block mt-3" type="button" @click="Process">Pay and order</button>
+    <button class="btn btn-lg btn-primary btn-block mt-3" type="submit">Pay and order</button>
 
   </form>
 </template>
 
 <script setup>
-import { computed ,ref } from "vue";
+import { ref, computed} from "vue";
 import { useRouter } from "vue-router";
 
 const router = useRouter();
 const userId = sessionStorage.getItem("userId");
 
-const Amount = ref("");
+const Amount = sessionStorage.getItem("totalOrderPrice");
+
 const Cvv = ref("");
 const CardNumber = ref("");
 const CardType = ref("");
@@ -59,15 +60,13 @@ const formattedExpirationDate = computed(() => {
 });
 
 const payAndOrder = async () => {
-
   const requestData = {
-    "amount": Amount.value,
-      "cvv": Cvv.value,
-      "expirationDate": formattedExpirationDate.value,
-      "cardNumber": CardNumber.value,
-      "cardType": CardType.value
+    "amount": Amount,
+    "cvv": Cvv.value,
+    "expirationDate": formattedExpirationDate.value,
+    "cardNumber": CardNumber.value,
+    "cardType": CardType.value
   };
-
 
   try {
     const response = await fetch('https://localhost:44396/api/Payment', {
@@ -105,7 +104,7 @@ const Process = async () => {
       cartsItems.forEach(function callback(currentValue) {
         const obj = {
           name: currentValue.name,
-          quqntity: currentValue.quqntityInCart,
+          quantity: currentValue.quqntityInCart,
         };
         orderItems.push(obj);
         removeItem(currentValue.id);
@@ -121,7 +120,6 @@ const Process = async () => {
     console.error('Error processing the order:', error);
   }
 };
-
 
 const removeItem = async (itemId) => {
   try {
@@ -189,6 +187,7 @@ const createOrder = async (obj) => {
     throw error;
   }
 };
+
 </script>
 
 <style scoped>

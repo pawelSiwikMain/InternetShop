@@ -10,6 +10,7 @@
         <th>User</th>
         <th>Address</th>
         <th>Products</th>
+        <th>Action</th>
       </tr>
       </thead>
       <tbody>
@@ -30,6 +31,9 @@
             {{ item && item.name }} (Quantity: {{ item && item.quqntity }})
           </div>
         </td>
+        <td>
+          <button @click="confirmOrderCompletion(order.id)" class="btn btn-success">Completed</button>
+        </td>
       </tr>
       </tbody>
     </table>
@@ -37,7 +41,7 @@
 </template>
 
 <script setup>
-import { ref, onMounted } from "vue";
+import {ref, onMounted} from "vue";
 
 const orders = ref([]);
 const showOrdersTable = ref(true);
@@ -80,6 +84,22 @@ const loadUserAndAddressDetails = async (order) => {
   }
 };
 
+const confirmOrderCompletion = async (orderId) => {
+  try {
+    const response = await fetch(`https://localhost:44396/api/Orders/${orderId}`, {
+      method: "DELETE",
+    });
+
+    if (response.ok) {
+      orders.value = orders.value.filter(order => order.id !== orderId);
+    } else {
+      console.error("Error deleting order:", response.statusText);
+    }
+  } catch (error) {
+    console.error("Error deleting order:", error);
+  }
+};
+
 onMounted(() => {
   fetchOrders();
 });
@@ -98,11 +118,10 @@ table {
   text-align: center;
 }
 
-table th, table td {
+table th,
+table td {
   padding: 8px;
   vertical-align: middle;
   text-align: center;
 }
-
 </style>
-

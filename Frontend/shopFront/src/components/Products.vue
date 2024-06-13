@@ -1,7 +1,26 @@
 <template>
-  <div class="container-fluid mt-5">
+  <div class="container-fluid">
+    <div class="row mb-3">
+      <div class="col-12">
+        <div class="description-card p-4">
+          <div class="description-content">
+            <img src="@/assets/logo.png" alt="Logo" class="description-logo">
+            <div>
+              <h1>Welcome to our MPK Furniture Store!</h1>
+              <h6>
+                We specialize in offering a diverse range of high-quality furniture.<br>
+                We offer everything you need to furnish your home beautifully.<br>
+                Our store has been proudly serving customers for over 20 years.
+              </h6>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <div class="row">
       <div class="col-md-2 bg-light p-4">
+
         <div class="mb-3">
           <h3>Select Category</h3>
           <label for="category" class="form-label"></label>
@@ -30,17 +49,15 @@
         </div>
       </div>
 
-      <div class="col-md-9">
+      <div class="col-md-10">
         <div class="row">
           <div v-for="product in filteredProducts" :key="product.id" class="col-12 col-md-4 col-lg-3 mb-4">
             <div class="card" @click="goToProductDetails(product)">
               <img :src="product.urlToPicture" class="card-img-top" alt="Product Image">
               <div class="card-body">
                 <h5 class="card-title">{{ product.name }}</h5>
-                <p class="card-text">{{ product.description }}</p>
                 <p class="card-text"><strong>Category:</strong> {{ product.category }}</p>
                 <p class="card-text"><strong>Price:</strong> {{ product.price }} zł</p>
-                <p class="card-text"><strong>Quantity:</strong> {{ product.quqntityInStorage }}</p>
               </div>
             </div>
           </div>
@@ -141,6 +158,14 @@ onMounted(() => {
 .card {
   width: 100%;
   height: 100%;
+  text-align: center;
+  align-items: center;
+}
+
+.description-card {
+  text-align: center;
+  background: whitesmoke;
+  border: 1px black solid;
 }
 
 .card-body {
@@ -151,4 +176,16 @@ onMounted(() => {
   max-height: 200px;
   max-width: 200px;
 }
+
+.description-content {
+  display: flex;
+  justify-content: center;
+}
+
+.description-logo {
+  max-width: 150px;
+  max-height: 150px;
+
+}
+
 </style>
