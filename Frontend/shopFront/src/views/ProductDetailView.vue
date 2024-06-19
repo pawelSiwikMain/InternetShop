@@ -1,8 +1,9 @@
 <template>
 
-  <NavBar/>
-  <ProductDetail/>
-
+  <NavBar>
+    <ProductDetail/>
+  </NavBar>
+  
 </template>
 
 <script setup>

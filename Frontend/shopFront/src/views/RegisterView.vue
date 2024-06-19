@@ -1,6 +1,9 @@
 <template>
-  <NavBar />
-  <Register/>
+
+  <NavBar>
+    <Register/>
+  </NavBar>
+
 </template>
 
 <script setup>

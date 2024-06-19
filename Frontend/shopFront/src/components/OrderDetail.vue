@@ -7,7 +7,7 @@
       <p> {{ item.name }} - Quantity: {{ item.quqntityInCart }} </p>
     </div>
 
-    <div v-if="deliveryAddress">
+    <div v-if="deliveryAddress && option ===0 ">
       <hr>
       <h5>Delivery Address</h5>
       <p><strong>Street: </strong>{{ deliveryAddress.street }}</p>
@@ -15,22 +15,29 @@
       <p><strong>postCode: </strong>{{ deliveryAddress.postCode }}</p>
       <p><strong>City: </strong>{{ deliveryAddress.city }}</p>
       <button class="btn btn-lg btn-primary" @click="changeAddress">Change address</button>
-    </div>
 
-    <div>
       <hr>
       <button class="btn btn-lg btn-primary" @click="payACard">Pay a card</button>
+
     </div>
 
     <div v-if="option === 1">
       <form class="form-signin" @submit.prevent="updateAddress">
         <img src="../assets/logo.png" alt="Logo">
         <h1 class="h3 mb-3 font-weight-normal">Update address</h1>
+        <label>Street</label>
         <input v-model="street" class="form-control" placeholder="Street" pattern="[A-Za-z0-9\s]{1,50}" required>
+
+        <label>City</label>
         <input v-model="city" class="form-control" placeholder="City" pattern="[A-Za-z\s]{1,50}" required>
+
+        <label>Post code</label>
         <input v-model="postCode" class="form-control" placeholder="Post Code ex. 01-123" pattern="[0-9]{2}-[0-9]{3}" required>
+
+        <label>Local number</label>
         <input v-model="localNumber" class="form-control" placeholder="Local Number" pattern="[0-9]{1,5}">
-        <button class="btn btn-lg btn-primary btn-block" type="submit">Update address</button>
+
+        <button class="btn btn-lg btn-primary btn-block mt-3 mb-5" type="submit">Update address</button>
       </form>
     </div>
   </div>
@@ -142,4 +149,16 @@ onMounted(() => {
 </script>
 
 <style scoped>
+
+label {
+  text-transform: uppercase;
+  font-size: 10px;
+  letter-spacing: 2px;
+  padding-left: 5px;
+}
+
+img {
+  width: 100px;
+  height: 100px;
+}
 </style>

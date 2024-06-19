@@ -11,14 +11,27 @@
 
     <div v-if="isAddProductFormOpen" class="AddProductForm">
       <h5>Add new product</h5>
+
+      <label>Name</label>
       <input required v-model="name" class="form-control mb-2" placeholder="Name">
+
+      <label>Description</label>
       <input required v-model="description" class="form-control mb-2" placeholder="Description">
+
+      <label>Category</label>
       <input required v-model="category" class="form-control mb-2" placeholder="Category">
+
+      <label>Price</label>
       <input required v-model="price" class="form-control mb-2" placeholder="Price">
+
+      <label>Quantity</label>
       <input required v-model="quqntityInStorage"  class="form-control mb-2" placeholder="Quantity">
+
+      <label>URL to picture</label>
       <input required v-model="urlToPicture"  class="form-control mb-2" placeholder="urlToPicture">
-      <button @click="addProduct" class="btn btn-success">Save</button>
-      <button @click="closeAddProductForm" class="btn btn-secondary">Cancel</button>
+
+      <button @click="addProduct" class="btn btn-success mr-3 mt-3">Save</button>
+      <button @click="closeAddProductForm" class="btn btn-secondary mt-3">Cancel</button>
     </div>
 
     <hr>
@@ -54,14 +67,27 @@
 
     <div v-if="isEditProductFormOpen" class="EditProductForm">
       <h5>Edit product</h5>
+
+      <label>Name</label>
       <input required v-model="editedProduct.name" class="form-control mb-2" placeholder="Name">
+
+      <label>Description</label>
       <input required v-model="editedProduct.description" class="form-control mb-2" placeholder="Description">
+
+      <label>Category</label>
       <input required v-model="editedProduct.category" class="form-control mb-2" placeholder="Category">
+
+      <label>Price</label>
       <input required v-model="editedProduct.price" class="form-control mb-2" placeholder="Price">
+
+      <label>Quantity</label>
       <input required v-model="editedProduct.quqntityInStorage" class="form-control mb-2" placeholder="Quantity">
+
+      <label>URL to picture</label>
       <input required v-model="editedProduct.urlToPicture" class="form-control mb-2" placeholder="urlToPicture">
-      <button @click="updateProduct" class="btn btn-success">Save</button>
-      <button @click="closeEditProductForm" class="btn btn-secondary">Cancel</button>
+
+      <button @click="updateProduct" class="btn btn-success mr-3 mt-3">Save</button>
+      <button @click="closeEditProductForm" class="btn btn-secondary mt-3">Cancel</button>
     </div>
 
   </div>
@@ -246,5 +272,12 @@ const deleteProduct = (productId) => {
 h5{
   text-align: center;
   padding: 10px;
+}
+
+label {
+  text-transform: uppercase;
+  font-size: 10px;
+  letter-spacing: 2px;
+  padding-left: 5px;
 }
 </style>

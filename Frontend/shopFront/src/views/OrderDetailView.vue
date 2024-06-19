@@ -1,7 +1,8 @@
 <template>
 
-  <NavBar/>
-  <OrderDetail/>
+  <NavBar>
+    <OrderDetail/>
+  </NavBar>
 
 </template>
 

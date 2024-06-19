@@ -1,8 +1,10 @@
 <template id="app">
 
-  <NavBar />
+  <NavBar>
+    <Products />
+  </NavBar>
 
-  <Products />
+
 
 </template>
 

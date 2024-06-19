@@ -1,6 +1,9 @@
 <template>
-  <NavBar />
-  <Login />
+
+  <NavBar>
+    <Login/>
+  </NavBar>>
+
 </template>
 
 <script setup>

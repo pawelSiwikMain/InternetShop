@@ -1,10 +1,14 @@
 <template>
   <form class="form-signin">
     <img src="../assets/logo.png" alt="Logo">
-    <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
+    <h1 class="h4 mb-3 font-weight-normal">Please sign in</h1>
+
+    <label>Email</label>
     <input v-model="userEmail" type="email" class="form-control mb-2" placeholder="Email" required>
+
+    <label>Password</label>
     <input v-model="password" type="password" class="form-control mb-2" placeholder="Password" required>
-    <button class="btn btn-lg btn-primary btn-block" type="button" @click="logIn">Sign in</button>
+    <button class="btn btn-lg btn-primary btn-block mt-3" type="button" @click="logIn">Sign in</button>
   </form>
 </template>
 
@@ -69,6 +73,13 @@ const logIn = () => {
   margin: auto;
   text-align: center;
   align-items: center;
+}
+
+label {
+  text-transform: uppercase;
+  font-size: 10px;
+  letter-spacing: 2px;
+  padding-left: 5px;
 }
 
 </style>

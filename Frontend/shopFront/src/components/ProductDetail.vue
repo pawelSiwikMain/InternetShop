@@ -26,7 +26,7 @@
           </div>
 
         </div>
-        <div class="mt-3">
+        <div class="mt-3 mb-3">
           <button class="btn btn-primary ml-3" @click="goToHomePage">Back to home</button>
         </div>
       </div>
@@ -113,8 +113,8 @@ onMounted(() => {
 }
 
 .img-fluid {
-  max-width: 500px;
-  max-height: 500px;
+  max-width: 400px;
+  max-height: 400px;
 }
 
 .product-details {

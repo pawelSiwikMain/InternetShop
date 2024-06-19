@@ -5,8 +5,9 @@ import Cart from "@/components/Cart.vue";
 
 <template>
 
-  <NavBar/>
-  <Cart/>
+  <NavBar>
+    <Cart/>
+  </NavBar>
 
 </template>
 

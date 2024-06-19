@@ -6,12 +6,19 @@
     <label for="amount">Amount</label>
     <input v-model="Amount" class="form-control" placeholder="Amount" required readonly>
 
-    <label for="cardDetails">Card Details</label>
+    <hr>
     <div class="d-flex">
-      <input v-model="CardNumber" class="form-control mr-2" placeholder="CardNumber" pattern="[0-9]{16}" maxlength="16" required>
-      <input v-model="Cvv" class="form-control" placeholder="Cvv" pattern="[0-9]{3}" maxlength="3" required>
+      <div class="col-md-8">
+        <label for="CardNumber" class="form-label">Card Number</label>
+        <input v-model="CardNumber" id="CardNumber" class="form-control" placeholder="Card Number" pattern="[0-9]{16}" maxlength="16" required>
+      </div>
+      <div class="col-md-4">
+        <label for="Cvv" class="form-label">CVV</label>
+        <input v-model="Cvv" id="Cvv" class="form-control" placeholder="CVV" pattern="[0-9]{3}" maxlength="3" required>
+      </div>
     </div>
 
+    <hr>
     <label for="expirationDate">Expiration Date</label>
     <div class="d-flex">
       <select v-model="expirationMonth" class="form-control mr-2" id="expirationMonth" required>
@@ -24,6 +31,7 @@
       </select>
     </div>
 
+    <hr>
     <label for="cardType">Card Type</label>
     <select v-model="CardType" class="form-control" required>
       <option value="" disabled selected>Card Type</option>
@@ -104,7 +112,7 @@ const Process = async () => {
       cartsItems.forEach(function callback(currentValue) {
         const obj = {
           name: currentValue.name,
-          quantity: currentValue.quqntityInCart,
+          quqntity: currentValue.quqntityInCart,
         };
         orderItems.push(obj);
         removeItem(currentValue.id);
@@ -198,4 +206,12 @@ const createOrder = async (obj) => {
   text-align: center;
   align-items: center;
 }
+
+label {
+  text-transform: uppercase;
+  font-size: 10px;
+  letter-spacing: 2px;
+  padding-left: 5px;
+}
+
 </style>

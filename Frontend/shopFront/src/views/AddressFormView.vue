@@ -1,7 +1,8 @@
 <template>
 
-  <NavBar/>
-  <AddressForm/>
+  <NavBar>
+    <AddressForm/>
+  </NavBar>
 
 </template>
 

@@ -1,14 +1,27 @@
 <template>
   <form class="form-signin" @submit.prevent="submitForm">
     <img src="../assets/logo.png" alt="Logo">
-    <h1 class="h3 mb-3 font-weight-normal">Please register</h1>
+    <h1 class="h4 mb-3 font-weight-normal">Please register</h1>
+
+    <label>Email</label>
     <input required v-model="email" type="email" class="form-control mb-2" placeholder="Email">
+
+    <label>Name</label>
     <input required v-model="name" class="form-control mb-2" placeholder="Name">
+
+    <label>LastName</label>
     <input required v-model="lastName" class="form-control mb-2" placeholder="LastName">
+
+    <label>Phone</label>
     <input required v-model="phone" type="tel" class="form-control mb-2" placeholder="Phone ex.123456789" pattern="[0-9]{9}">
+
+    <label>Password</label>
     <input required v-model="password" type="password" class="form-control mb-2" placeholder="Password">
+
+    <label>Re-type password</label>
     <input required v-model="repassword" type="password" class="form-control mb-2" placeholder="Re-type password">
-    <button class="btn btn-lg btn-primary btn-block" type="submit">Register</button>
+
+    <button class="btn btn-lg btn-primary btn-block mt-3" type="submit">Register</button>
   </form>
 </template>
 
@@ -78,5 +91,17 @@ const register = () => {
   margin: auto;
   text-align: center;
   align-items: center;
+}
+
+label {
+  text-transform: uppercase;
+  font-size: 10px;
+  letter-spacing: 2px;
+  padding-left: 5px;
+}
+
+img {
+  width: 100px;
+  height: 100px;
 }
 </style>

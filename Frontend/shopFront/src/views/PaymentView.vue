@@ -1,7 +1,8 @@
 <template>
 
-  <NavBar/>
-  <Payment/>
+  <NavBar>
+    <Payment/>
+  </NavBar>
 
 </template>
 
